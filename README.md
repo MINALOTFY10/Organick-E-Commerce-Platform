@@ -142,6 +142,10 @@ This reflects substantial incremental delivery and maintenance work over time.
 ![Checkout Page](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045716/checkout_hado4m.png)
 ![Stripe Checkout](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045718/stripe_checkout_oiyee7.png)
 
+### Admin Dashboard Section
+
+![Admin Feed](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772046048/admin_dashboard_rg9xbk.png)
+
 ---
 
 ## Summary
