@@ -124,96 +124,23 @@ This reflects substantial incremental delivery and maintenance work over time.
 
 ### Home / Storefront Visual
 
-![Home Banner](public/img/banner.png)
+![Home Banner](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045721/Home_k3uebv.png)
 
 ### Product Experience
 
-![Product Example](public/img/product-example.png)
+![Categories](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045719/categories_tnqk3q.png)
+![our Collection](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045722/products_ou40ls.png)
+![Product Example](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045716/product_details_fe6mho.png)
+![Reviews Section](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045718/reviews_iby3ni.png)
 
-### Shop Section
+### Blog Section
 
-![Shop Banner](public/img/ShopBanner.png)
+![Blog Feed](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045721/blog_feed_va9isr.png)
 
-### About & Content Pages
+### Checkout Experience
 
-![About Page](public/img/AboutUs.png)
-
-### Services / Marketing Section
-
-![Service Banner](public/img/ServiceBanner.jpg)
-
-### Contact Experience
-
-![Contact Page](public/img/ContactUs.jpg)
-
----
-
-## Local Setup
-
-### Prerequisites
-
-- Node.js 20+
-- npm 10+
-- PostgreSQL
-- Stripe account (for checkout)
-
-### Installation
-
-```bash
-npm install
-```
-
-### Environment Variables
-
-Create `.env` in project root and configure:
-
-| Variable | Purpose |
-| --- | --- |
-| `DATABASE_URL` | PostgreSQL connection string for Prisma |
-| `NEXT_PUBLIC_BETTER_AUTH_URL` | Base auth/app URL |
-| `TRUSTED_ORIGINS` | Allowed auth origins |
-| `STRIPE_SECRET_KEY` | Stripe server secret |
-| `NEXT_PUBLIC_APP_URL` | Public app URL for redirects |
-| `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | Optional Google OAuth |
-| `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` | Optional GitHub OAuth |
-| `NEXT_PUBLIC_AUTH_GOOGLE_ENABLED` | Toggle Google button in UI |
-| `NEXT_PUBLIC_AUTH_GITHUB_ENABLED` | Toggle GitHub button in UI |
-
-### Database
-
-```bash
-npx prisma migrate dev
-npx prisma db seed
-```
-
-### Run
-
-```bash
-npm run dev
-```
-
-App runs at [http://localhost:3000](http://localhost:3000).
-
----
-
-## Scripts
-
-- `npm run dev` — Start development server
-- `npm run build` — Build production bundle
-- `npm run start` — Start production server
-- `npm run lint` — Run lint checks
-- `npm run test` — Run Vitest in watch mode
-- `npm run test:run` — Run tests once
-
----
-
-## Folder Overview
-
-- `src/app` — Route-based pages and layouts
-- `src/actions` — Server-side business logic
-- `src/components` — UI component library and feature components
-- `src/lib` — Shared utilities and infrastructure helpers
-- `prisma` — Schema, migrations, and seed data
+![Checkout Page](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045716/checkout_hado4m.png)
+![Stripe Checkout](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045718/stripe_checkout_oiyee7.png)
 
 ---
 
