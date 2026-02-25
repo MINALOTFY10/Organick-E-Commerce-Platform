@@ -1,0 +1,12 @@
+[
+  {
+    "id": "af033191-0470-44eb-9619-4fd53b5cc21c",
+    "checksum": "326032bbcc70d685e261037f0b9733ea24184a54f610c19e95ea2362d179e665",
+    "finished_at": "2026-02-19T12:46:09.375Z",
+    "migration_name": "20260219000002_cart_item_unique_cart_product",
+    "logs": null,
+    "rolled_back_at": null,
+    "started_at": "2026-02-19T12:46:09.007Z",
+    "applied_steps_count": 1
+  }
+]
