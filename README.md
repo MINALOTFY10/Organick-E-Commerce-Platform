@@ -1,63 +1,222 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Organick — Full-Stack E-commerce Platform
 
-## Getting Started
+Organick is a production-style full-stack e-commerce application built with Next.js App Router, Prisma, PostgreSQL, Better Auth, and Stripe. It includes complete customer shopping flows, account management, admin operations, CMS/blog features, and role-based access control.
 
-First, run the development server:
+---
+
+## Project Highlights
+
+- End-to-end commerce flow: browse products → cart → Stripe checkout → thank-you page
+- Customer account center: profile, address book, favourites, order history, password change
+- Admin dashboard and operations: products, categories, orders, users, reviews, blogs, messages, settings
+- Content and engagement modules: blog posts, product reviews, contact messaging
+- Strong backend foundation: Prisma schema + **17 migration folders** and dedicated action layers
+
+---
+
+## Technology Stack
+
+### Frontend
+
+- Next.js 16 (App Router)
+- React 19 + TypeScript
+- Tailwind CSS 4
+- Framer Motion
+- Lucide + Font Awesome icons
+
+### Backend & Services
+
+- Prisma ORM + PostgreSQL
+- Better Auth (email/password + optional Google/GitHub OAuth)
+- Stripe Checkout integration
+- Nodemailer (email flows)
+
+### Quality & Tooling
+
+- ESLint
+- Vitest + Testing Library
+
+---
+
+## Functionalities Implemented
+
+### 1) Customer-Facing Store
+
+- Home page and marketing sections
+- Product listing page and dynamic single product route (`/products/[productSlug]`)
+- Category-based shopping experience
+- Cart management (add/update/remove)
+- Checkout workflow and payment handoff
+- Post-checkout success/thank-you page
+
+### 2) Authentication & Access Control
+
+- Register, login, forgot/reset password, verify email routes
+- Better Auth integration
+- Optional social login support (Google/GitHub)
+- Route protection middleware
+- Role model support (customer/admin/super-admin)
+
+### 3) Account Area
+
+- Account overview
+- Address management (`/account/addresses`)
+- Order tracking/history (`/account/orders`)
+- Favourites management (`/account/favourites`)
+- Change password
+
+### 4) Admin Panel
+
+Available admin sections under `/admin`:
+
+- Dashboard
+- Products management
+- Categories management
+- Orders management
+- Users management
+- Reviews moderation
+- Blog management
+- Contact messages management
+- Settings
+
+### 5) Content, Communication & Trust
+
+- Blog module and blog status support
+- Product reviews system
+- Contact form and message handling
+- Service and About pages
+
+---
+
+## Work Scope Evidence (Implemented Modules)
+
+### Route Architecture (`src/app`)
+
+- Storefront, auth, account, checkout, blog, service, contact, and admin route groups are all present.
+
+### Business Logic Layer (`src/actions`)
+
+- Dedicated action files for: products, categories, cart, checkout, orders, users, profile, addresses, reviews, blog, contact, admin stats/search/notifications.
+
+### Database Evolution (`prisma/migrations`)
+
+- 17 migration directories tracked, covering:
+	- blog table + blog status
+	- contact messages
+	- user roles
+	- currency normalization to integer cents
+	- order address/session updates
+	- cart item uniqueness constraints
+	- reviews and pricing enhancements
+	- shipped status/tracking additions
+
+This reflects substantial incremental delivery and maintenance work over time.
+
+---
+
+## Screenshot Showcase (Project Work)
+
+> These screenshots/images come from the current project assets in `public/img` and demonstrate the implemented UI scope.
+
+### Main Navigation & Branding
+
+![Navigation](public/img/navigation.png)
+
+### Home / Storefront Visual
+
+![Home Banner](public/img/banner.png)
+
+### Product Experience
+
+![Product Example](public/img/product-example.png)
+
+### Shop Section
+
+![Shop Banner](public/img/ShopBanner.png)
+
+### About & Content Pages
+
+![About Page](public/img/AboutUs.png)
+
+### Services / Marketing Section
+
+![Service Banner](public/img/ServiceBanner.jpg)
+
+### Contact Experience
+
+![Contact Page](public/img/ContactUs.jpg)
+
+---
+
+## Local Setup
+
+### Prerequisites
+
+- Node.js 20+
+- npm 10+
+- PostgreSQL
+- Stripe account (for checkout)
+
+### Installation
+
+```bash
+npm install
+```
+
+### Environment Variables
+
+Create `.env` in project root and configure:
+
+| Variable | Purpose |
+| --- | --- |
+| `DATABASE_URL` | PostgreSQL connection string for Prisma |
+| `NEXT_PUBLIC_BETTER_AUTH_URL` | Base auth/app URL |
+| `TRUSTED_ORIGINS` | Allowed auth origins |
+| `STRIPE_SECRET_KEY` | Stripe server secret |
+| `NEXT_PUBLIC_APP_URL` | Public app URL for redirects |
+| `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | Optional Google OAuth |
+| `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` | Optional GitHub OAuth |
+| `NEXT_PUBLIC_AUTH_GOOGLE_ENABLED` | Toggle Google button in UI |
+| `NEXT_PUBLIC_AUTH_GITHUB_ENABLED` | Toggle GitHub button in UI |
+
+### Database
+
+```bash
+npx prisma migrate dev
+npx prisma db seed
+```
+
+### Run
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+App runs at [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Scripts
 
-## Learn More
+- `npm run dev` — Start development server
+- `npm run build` — Build production bundle
+- `npm run start` — Start production server
+- `npm run lint` — Run lint checks
+- `npm run test` — Run Vitest in watch mode
+- `npm run test:run` — Run tests once
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Folder Overview
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `src/app` — Route-based pages and layouts
+- `src/actions` — Server-side business logic
+- `src/components` — UI component library and feature components
+- `src/lib` — Shared utilities and infrastructure helpers
+- `prisma` — Schema, migrations, and seed data
 
-## Better Auth (Credentials + OAuth)
+---
 
-This project uses Better Auth with email/password and optional social providers.
+## Summary
 
-Set these environment variables to enable social login:
-
-| Variable | Description |
-| --- | --- |
-| `GOOGLE_CLIENT_ID` | Google OAuth client id (server-side). |
-| `GOOGLE_CLIENT_SECRET` | Google OAuth client secret (server-side). |
-| `GITHUB_CLIENT_ID` | GitHub OAuth app client id (server-side). |
-| `GITHUB_CLIENT_SECRET` | GitHub OAuth app client secret (server-side). |
-| `NEXT_PUBLIC_AUTH_GOOGLE_ENABLED` | Set to `true` to show the Google button in login/register UI. |
-| `NEXT_PUBLIC_AUTH_GITHUB_ENABLED` | Set to `true` to show the GitHub button in login/register UI. |
-| `NEXT_PUBLIC_BETTER_AUTH_URL` | Base app URL used by Better Auth client (for example `http://localhost:3000`). |
-| `TRUSTED_ORIGINS` | Comma-separated origins allowed by Better Auth (for example `http://localhost:3000,https://yourdomain.com`). |
-
-Notes:
-- Social provider auth is enabled only when both client id and client secret are present.
-- Keep `NEXT_PUBLIC_AUTH_*_ENABLED` aligned with server credentials so only working providers are shown.
-- In each provider dashboard, set callback URL to your Better Auth route: `/api/auth/callback/{provider}`.
-
-## Stripe Checkout Setup
-
-Stripe powers the checkout and order finalization flow. Configure the following environment variables before running the app:
-
-| Variable | Description |
-| --- | --- |
-| `STRIPE_SECRET_KEY` | Required. Create a restricted secret key in the Stripe dashboard and paste it here so server actions can create Checkout Sessions. |
-| `NEXT_PUBLIC_APP_URL` | Optional but recommended. The absolute origin (for example `http://localhost:3000` in development or `https://example.com` in production) used to build Stripe success/cancel redirect URLs. |
-
-After setting the variables, restart the dev server. When customers submit the checkout form we create a Stripe Checkout Session, redirect them to the hosted payment page, and then finalize the order on `/checkout/success` once Stripe confirms the payment. Successful payments redirect customers to `/thankyou` where they can review the most recent order.
+This project demonstrates significant full-stack delivery across customer UX, admin tooling, secure auth, payments, and database lifecycle management. The number of modules, route groups, server actions, and migrations reflects a high amount of hands-on implementation work.
