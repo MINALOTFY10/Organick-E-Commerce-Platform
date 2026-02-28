@@ -36,32 +36,17 @@ export default function ProductGrid({
     );
   }
 
-  if (mobileScroll) {
-    return (
-      <div className="flex sm:flex-wrap sm:justify-center gap-6
-        overflow-x-auto sm:overflow-visible
-        snap-x snap-mandatory sm:snap-none
-        scrollbar-hide pb-4 sm:pb-0
-        animate-[fadeIn_0.7s_ease-out]">
-        {products.map((product, index) => (
-          <div
-            key={product.id}
-            className="shrink-0 snap-center w-[72vw] sm:shrink sm:w-[calc(50%-1.5rem)] lg:w-[calc(33%-1.5rem)] xl:w-[calc(25%-1.5rem)] max-w-87.5 animate-[fadeInUp_0.6s_ease-out_backwards]"
-            style={{ animationDelay: `${index * 0.1}s` }}
-          >
-            <ProductItem product={product} isFavourited={favouriteSet.has(product.id)} />
-          </div>
-        ))}
-      </div>
-    );
-  }
-
   return (
-    <div className="flex flex-wrap justify-center gap-8 animate-[fadeIn_0.7s_ease-out]">
+    <div
+      className={`grid  ${products.length == 4 ? "grid-cols-2" : "grid-cols-3"}  sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-6 pb-4 animate-[fadeIn_0.7s_ease-out]`}
+      style={{
+        gridAutoRows: '1fr',
+      }}
+    >
       {products.map((product, index) => (
-        <div 
-          key={product.id} 
-          className="w-full sm:w-[calc(50%-2rem)] lg:w-[calc(33%-2rem)] xl:w-[calc(25%-2rem)] max-w-87.5 animate-[fadeInUp_0.6s_ease-out_backwards]"
+        <div
+          key={product.id}
+          className="w-full h-full animate-[fadeInUp_0.6s_ease-out_backwards]"
           style={{ animationDelay: `${index * 0.1}s` }}
         >
           <ProductItem product={product} isFavourited={favouriteSet.has(product.id)} />

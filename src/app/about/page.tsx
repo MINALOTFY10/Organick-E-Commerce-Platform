@@ -12,8 +12,7 @@ export const metadata: Metadata = {
     "Learn about Organick's mission to bring fresh, certified organic produce to your table. Discover our story, values, and commitment to sustainability.",
   openGraph: {
     title: "About Us — Organick",
-    description:
-      "Learn about Organick's mission to bring fresh, certified organic produce to your table.",
+    description: "Learn about Organick's mission to bring fresh, certified organic produce to your table.",
     type: "website",
   },
 };
@@ -22,8 +21,8 @@ export default function AboutPage() {
   return (
     <main className="flex flex-col min-h-screen">
       <SectionHeader img={AboutBannerImg} title="About Us" />
-      
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 space-y-12 py-16">
+      {/* Use tighter container and more consistent vertical spacing */}
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 space-y-10 py-8 sm:pt-14 pb-8">
         <AboutView />
         <WhyChooseUsView />
         <OfferView />

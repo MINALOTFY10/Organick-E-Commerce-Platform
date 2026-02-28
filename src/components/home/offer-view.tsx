@@ -22,7 +22,7 @@ export default function OfferView({ products }: OfferSectionProps) {
       </div>
 
       <div className="flex flex-col sm:flex-row items-start sm:items-center w-[90%] sm:w-[80%] justify-between mb-7 gap-4 sm:gap-0 relative z-10 animate-[fadeInUp_0.7s_ease-out]">
-        <div className="flex flex-col mb-8 text-start">
+        <div className="flex flex-col mb-2 text-start">
           <div className="animate-[floatRotate_6s_ease-in-out_infinite]">
             <Image src={OfferTaglineImg} alt="Offer" width={70} height={70} />
           </div>
@@ -32,7 +32,6 @@ export default function OfferView({ products }: OfferSectionProps) {
           </h1>
         </div>
         <Link href="/products?category=Meat" className="mb-3 group relative animate-[fadeInUp_0.7s_ease-out_0.4s_backwards]">
-         
           <SecondaryButton>
             <span className="flex items-center gap-2">
               Shop Now
@@ -41,8 +40,8 @@ export default function OfferView({ products }: OfferSectionProps) {
         </Link>
       </div>
 
-      <div className="w-full sm:w-[80%] relative z-10 animate-[fadeInUp_0.7s_ease-out_0.6s_backwards] overflow-hidden">
-        <ProductsGrid products={products} mobileScroll />
+      <div className="w-[90%] sm:w-[80%] relative z-10 animate-[fadeInUp_0.7s_ease-out_0.6s_backwards]">
+        <ProductsGrid products={products} />
       </div>
     </section>
   );

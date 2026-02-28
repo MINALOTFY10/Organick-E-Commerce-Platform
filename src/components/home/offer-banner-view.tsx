@@ -17,16 +17,16 @@ const OfferCard = ({ banner, index }: { banner: BannerData; index: number }) => 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.15 }}
-      className="relative overflow-hidden rounded-2xl group"
+      className="relative overflow-hidden rounded-2xl group min-w-[70vw] sm:min-w-[48vw] md:min-w-0"
     >
       {/* Image */}
       <div className="relative">
         <Image
           src={banner.image}
           alt={banner.altText}
-          width={600}
-          height={350}
-          className="w-full object-cover max-h-40 md:max-h-none transition-transform duration-500 group-hover:scale-105"
+          width={700}
+          height={400}
+          className="w-full object-cover max-h-52 md:max-h-none transition-transform duration-500 group-hover:scale-105"
         />
       </div>
 
@@ -84,9 +84,17 @@ export default function OfferBannerView() {
   ];
 
   return (
-    <section className="max-w-250 mx-auto px-4 py-6 sm:pt-16 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8" aria-label="Current offers">
+    <section
+      className="max-w-230 mx-auto px-4 py-6 sm:pt-16 flex gap-6 overflow-x-auto md:grid md:grid-cols-2 md:gap-8 md:overflow-x-visible scrollbar-hide"
+      aria-label="Current offers"
+      style={{ WebkitOverflowScrolling: 'touch' }}
+    >
       {bannerData.map((banner, index) => (
-        <OfferCard key={index} banner={banner} index={index} />
+        <OfferCard
+          key={index}
+          banner={banner}
+          index={index}
+        />
       ))}
     </section>
   );

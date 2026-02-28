@@ -10,7 +10,7 @@ export default function ProductPagination({
   onChange,
 }: Props) {
   return (
-    <div className="flex justify-center gap-2 items-center">
+    <div className="flex flex-wrap justify-center gap-2 items-center w-full max-w-full overflow-x-auto py-2">
       {/* Previous Button */}
       <button
         onClick={() => page > 1 && onChange(page - 1)}

@@ -7,13 +7,14 @@ import { Search, X } from "lucide-react";
 import { useReducedMotion } from "@/lib/hooks/use-reduced-motion";
 import CartButton from "@/components/cart/cart-button";
 import PrimaryButton from "@/components/ui/primary-button";
+import ShopDropdown from "@/components/main-navigation/shop-dropdown";
 
 const MAIN_LINKS = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
   { name: "Shop", href: "/products" },
   { name: "Service", href: "/service" },
   { name: "Blog", href: "/blog" },
+  { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -25,7 +26,7 @@ interface NavLinksProps {
 }
 
 /** Inline storefront search that navigates to /products?search=... */
-function NavSearch() {
+function NavSearch({ onNavigate }: { onNavigate?: () => void }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -42,6 +43,7 @@ function NavSearch() {
       router.push(`/products?search=${encodeURIComponent(q)}`);
       setQuery("");
       setOpen(false);
+      onNavigate?.();
     }
   };
 
@@ -91,12 +93,7 @@ function NavSearch() {
   );
 }
 
-const NavLinks = ({
-  menuOpen,
-  setMenuOpen,
-  session,
-  cartCount,
-}: NavLinksProps) => {
+const NavLinks = ({ menuOpen, setMenuOpen, session, cartCount }: NavLinksProps) => {
   const pathname = usePathname();
   const prefersReducedMotion = useReducedMotion();
 
@@ -129,6 +126,14 @@ const NavLinks = ({
         role="list"
       >
         {MAIN_LINKS.map((link) => {
+          if (link.name === "Shop") {
+            return (
+              <motion.li key="shop" variants={itemVars}>
+                <ShopDropdown setMenuOpen={setMenuOpen} />
+              </motion.li>
+            );
+          }
+
           const isActive = pathname === link.href;
           return (
             <motion.li key={link.name} variants={itemVars}>
@@ -154,9 +159,9 @@ const NavLinks = ({
         {/* Action Section */}
         <motion.li variants={itemVars} className="ms-auto flex items-center gap-3 sm:gap-4 mt-6 lg:mt-0">
           {/* Storefront search — always visible */}
-          <NavSearch />
+          <NavSearch onNavigate={() => setMenuOpen(false)} />
 
-          {session ? (
+          {session ?
             <>
               <Link
                 href="/account"
@@ -166,16 +171,19 @@ const NavLinks = ({
                 className="relative flex items-center justify-center w-9 h-9 rounded-full bg-(--primary-color)/10 text-(--primary-color) hover:bg-(--secondary-color)/15 hover:text-(--secondary-color) transition-all duration-200"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                  <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clipRule="evenodd" />
+                  <path
+                    fillRule="evenodd"
+                    d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </Link>
               <CartButton cartCount={cartCount} />
             </>
-          ) : (
-            <Link href="/login">
+          : <Link href="/login" onClick={() => setMenuOpen(false)}>
               <PrimaryButton variant="login">Sign In</PrimaryButton>
             </Link>
-          )}
+          }
         </motion.li>
       </motion.ul>
     </nav>

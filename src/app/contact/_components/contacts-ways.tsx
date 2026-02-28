@@ -13,7 +13,7 @@ import PhoneIconImg from "@/../public/img/PhoneIcon.png";
 
 export default function ContactsWays() {
   return (
-    <div className="mx-auto max-w-6xl mt-16 px-4 flex flex-col xl:flex-row items-center xl:items-start">
+    <div className="mx-auto max-w-6xl mt-8 sm:mt-16 px-4 flex flex-col xl:flex-row items-center xl:items-start">
       {/* Left Image */}
       <div className="xl:w-1/2 flex justify-center mb-10 xl:mb-0">
         <Image

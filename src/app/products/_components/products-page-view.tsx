@@ -118,8 +118,8 @@ export default function ProductPageView({
   }, [router, pathname]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-10">
-      <ProductFiltersSidebar
+    <div className="gap-10">
+      {/* <ProductFiltersSidebar
         search={search}
         onSearch={setSearch}
         category={filters.category}
@@ -128,35 +128,9 @@ export default function ProductPageView({
         onPrice={setPrice}
         categories={categories}
         onReset={handleReset}
-      />
+      /> */}
 
       <div className="space-y-10">
-        {/* Sort bar */}
-        <div className="flex items-center justify-between gap-4">
-          <p className="text-sm text-gray-500">
-            {products.length === 0
-              ? "No products found"
-              : `Showing ${products.length} product${products.length === 1 ? "" : "s"}`}
-          </p>
-          <div className="flex items-center gap-2">
-            <label htmlFor="sort-select" className="text-sm font-medium text-gray-600 whitespace-nowrap">
-              Sort by:
-            </label>
-            <select
-              id="sort-select"
-              value={filters.sortBy}
-              onChange={(e) => updateParams({ sortBy: e.target.value })}
-              className="rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-(--primary-color) transition-all cursor-pointer hover:border-gray-300"
-            >
-              {SORT_OPTIONS.map((opt) => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
         <ProductGrid products={products} favouritedIds={favouritedIds} />
         {totalPages > 1 && (
           <ProductPagination
