@@ -5,7 +5,7 @@ import { auth } from "@/lib/auth";
 // eliminating the HTTP loopback round trip that the Edge runtime requires.
 export const runtime = "nodejs";
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const protectedRouteNeedsAuthentication =

@@ -13,7 +13,7 @@ interface BlogsViewProps {
 
 export default async function BlogsView({ blogs }: BlogsViewProps) {
   return (
-    <section className="bg-white mt-10 mb-10 px-6 md:px-12 lg:px-40">
+    <section className="bg-white mt-10 mb-10 px-4 sm:px-6 md:px-12 lg:px-16">
       <div className="max-w-7xl mx-auto">
         {/* Header Area */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
@@ -35,8 +35,14 @@ export default async function BlogsView({ blogs }: BlogsViewProps) {
         </div>
 
         {/* Blog Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 ">
-          <BlogList blogs={blogs} />
+        <div className="flex md:grid md:grid-cols-2 gap-8 md:gap-10 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none scrollbar-hide pb-4 md:pb-0">
+          <div className="flex gap-8 md:gap-0">
+            {blogs.map((post) => (
+              <div key={post.id} className="shrink-0 snap-center w-[80vw] sm:w-[60vw] md:w-auto">
+                <BlogList blogs={[post]} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

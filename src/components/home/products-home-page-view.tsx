@@ -10,7 +10,7 @@ import ProductGrid from "@/app/products/_components/product-grid";
 
 export default function ProductsHomePageView({ products }: { products: Product[] }) {
   return (
-    <section className="flex flex-col items-center w-full mt-4 mb-0 max-w-[80%] mx-auto relative overflow-hidden">
+    <section className="flex flex-col items-center w-full mt-4 mb-0 max-w-[95%] sm:max-w-[85%] lg:max-w-[80%] mx-auto relative overflow-hidden">
 
       <div className="flex flex-col items-center mb-6 relative z-10 animate-[fadeInUp_0.7s_ease-out]">
         <div className="animate-[gentleBounce_3s_ease-in-out_infinite]">

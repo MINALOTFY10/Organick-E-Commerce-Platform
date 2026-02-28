@@ -32,7 +32,7 @@ export default function OurMissionView() {
         <Image src={WhoAreWeImg} alt="Who Are We" fill className="object-cover" priority />
       </div>
 
-      <div className="flex-1 flex flex-col justify-center items-center relative sm:py-12 xl:py-0 bg-[#f9f9f9] xl:bg-transparent">
+      <div className="flex-1 flex flex-col justify-center items-center relative py-8 sm:py-12 xl:py-0 bg-[#f9f9f9] xl:bg-transparent">
         <WhoWeAreCard>
           <div className="mb-2">
             <Image src={EcoFriendlyImg} alt="Eco Friendly Tag" width={100} height={40} className="object-contain" />
