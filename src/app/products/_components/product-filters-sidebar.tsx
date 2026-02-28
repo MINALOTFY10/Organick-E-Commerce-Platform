@@ -11,7 +11,10 @@ interface Props {
 
 export default function ProductFiltersSidebar({ search, onSearch, category, onCategory, price, onPrice, categories, onReset }: Props) {
   return (
-    <aside className="sticky top-24 h-fit bg-white rounded-2xl p-6 shadow-sm space-y-8 animate-[slideInLeft_0.5s_ease-out]">
+    <aside
+      className="w-full sm:w-auto sm:sticky sm:top-24 h-fit bg-white rounded-2xl p-4 sm:p-6 shadow-sm space-y-8 animate-[slideInLeft_0.5s_ease-out] overflow-auto"
+      style={{ maxHeight: '90vh' }}
+    >
       <h3 className="text-lg font-semibold tracking-tight flex items-center gap-2">
         <svg className="w-5 h-5 text-[#2D5356]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />

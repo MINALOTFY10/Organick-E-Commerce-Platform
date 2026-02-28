@@ -45,15 +45,15 @@ export default async function Home() {
       <Suspense fallback={<ProductSectionSkeleton />}>
         <CategoriesSection />
       </Suspense>
-      <AboutView />
-      <TestimonialCounterView />
-      <OurMissionView />
+      {/* <AboutView /> */}
       <Suspense fallback={<ProductSectionSkeleton />}>
         <BlogsSection />
       </Suspense>
       <Suspense fallback={<ProductSectionSkeleton />}>
         <OfferSection />
       </Suspense>
+      <OurMissionView />
+      <TestimonialCounterView />
       <NewsletterSection />
     </div>
   );

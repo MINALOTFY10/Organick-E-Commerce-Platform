@@ -52,7 +52,7 @@ export default function BlogPost({ post }: BlogPostProps) {
   return (
     <article className="min-h-screen bg-white pb-20">
       <div className="relative h-[60vh] w-full">
-        <Image src={post.heroImage} alt="" fill className="object-cover w-full h-full" aria-hidden="true" />
+        <img src={post.heroImage} alt="" className="object-cover w-full h-full" aria-hidden="true" />
         <div className="absolute inset-0 bg-black/10" />
       </div>
 

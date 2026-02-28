@@ -32,13 +32,13 @@ const CARD_IMAGES = [
 
 // Soft pastel backgrounds cycling through the card grid
 const CARD_COLORS = [
-  "bg-[#EEF3F5]", // light steel blue
-  "bg-[#E8F5F0]", // light mint
-  "bg-[#FFF8E8]", // light yellow
-  "bg-[#FFF0EE]", // light blush
-  "bg-[#F0F0FF]", // light lavender
-  "bg-[#F5F5F0]", // light sage
-  "bg-[#FFF5F0]", // light peach
+  "bg-[#C5D3DB]", // steel blue (darker)
+  "bg-[#B7D8C7]", // mint (darker)
+  "bg-[#FFE1A8]", // yellow (darker)
+  "bg-[#FFD1CC]", // blush (darker)
+  "bg-[#C5C5E6]", // lavender (darker)
+  "bg-[#D1D1B7]", // sage (darker)
+  "bg-[#FFD1B7]", // peach (darker)
 ];
 
 interface Category {
@@ -56,7 +56,7 @@ export default function CategoriesView({ categories }: { categories: Category[] 
       </h2>
 
       {/* Category grid */}
-      <div className="grid grid-cols-3 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+      <div className="grid grid-cols-3 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
         {categories.map((category, index) => {
           const bgColor = CARD_COLORS[index % CARD_COLORS.length];
           const imgSrc = CARD_IMAGES[index % CARD_IMAGES.length];
@@ -66,7 +66,7 @@ export default function CategoriesView({ categories }: { categories: Category[] 
               key={category.id}
               href={`/products?category=${encodeURIComponent(category.name)}`}
               className={`
-                relative flex flex-col rounded-2xl overflow-hidden
+                relative flex flex-col rounded-lg overflow-hidden
                 ${bgColor} p-5 min-h-45 group
                 transition-transform duration-300 hover:-translate-y-1 hover:shadow-md
               `}

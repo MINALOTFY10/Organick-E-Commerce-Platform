@@ -35,15 +35,22 @@ export default async function BlogsView({ blogs }: BlogsViewProps) {
         </div>
 
         {/* Blog Cards Grid */}
-        <div className="flex md:grid md:grid-cols-2 gap-8 md:gap-10 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none scrollbar-hide pb-4 md:pb-0">
-          <div className="flex gap-8 md:gap-0">
+          <div
+            className="
+              flex md:grid md:grid-cols-2 gap-8 md:gap-10
+              overflow-x-auto md:overflow-visible
+              snap-x snap-mandatory md:snap-none scrollbar-hide pb-4 md:pb-0
+            "
+          >
             {blogs.map((post) => (
-              <div key={post.id} className="shrink-0 snap-center w-[80vw] sm:w-[60vw] md:w-auto">
+              <div
+                key={post.id}
+                className="shrink-0 snap-center w-[80vw] sm:w-[60vw] md:w-full"
+              >
                 <BlogList blogs={[post]} />
               </div>
             ))}
           </div>
-        </div>
       </div>
     </section>
   );

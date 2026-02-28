@@ -17,12 +17,12 @@ export const metadata: Metadata = {
 
 export default function ServicePage() {
   return (
-    <>
+    <div className="mb-5">
       <SectionHeader img={ServiceBannerImg} title="Our Services" />
-      <div className="px-0 xs:px-10 sm:px-20 mt-20">
+      <div className="px-0 xs:px-10 sm:px-20 mt-10 sm:mt-15">
         <ServiceSection />
       </div>
       <WallSection />
-    </>
+    </div>
   );
 }

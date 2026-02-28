@@ -92,7 +92,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen flex w-full bg-[#F9F8F4]">
+    <div className="max-sm:my-10 sm:min-h-screen flex w-full bg-[#F9F8F4]">
       {/* LEFT SIDE - Visual/Brand Area */}
       <div className="hidden lg:flex w-1/2 relative bg-(--primary-color) items-center justify-center overflow-hidden">
         {/* Background Image with Overlay */}
@@ -121,7 +121,7 @@ function LoginForm() {
       </div>
 
       {/* RIGHT SIDE - Form Area */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 lg:p-16 relative">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-2 lg:p-16 relative">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -260,11 +260,6 @@ function LoginForm() {
             </div>
           </form>
         </motion.div>
-
-        {/* Mobile footer credit / decoration */}
-        <div className="absolute bottom-6 text-center lg:hidden">
-          <p className="text-xs text-gray-400">&copy; {new Date().getFullYear()} Organick Foods</p>
-        </div>
       </div>
     </div>
   );
