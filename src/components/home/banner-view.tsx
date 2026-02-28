@@ -48,7 +48,7 @@ export default function BannerView() {
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.85, 0.6]);
 
   return (
-    <section ref={ref} className="relative w-full h-[60vh] lg:h-[80vh] overflow-hidden" aria-label="Hero banner">
+    <section ref={ref} className="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden" aria-label="Hero banner">
       {/* Parallax Background */}
       <motion.div style={prefersReducedMotion ? undefined : { y }} className="absolute inset-0">
         <Image src={bannerImg} alt="" fill priority className="object-cover" aria-hidden="true" />

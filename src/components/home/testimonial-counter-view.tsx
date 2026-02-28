@@ -147,7 +147,7 @@ export default function TestimonialCounterView() {
       </motion.div>
 
       <div className="relative z-10 container mx-auto px-4 max-w-6xl">
-        <div className="flex flex-col items-center border-b border-[#D4D4D4] pb-20 mb-20 text-center">
+        <div className="flex flex-col items-center border-b border-[#D4D4D4] pb-10 sm:pb-20 mb-10 sm:mb-20 text-center">
           {/* Header */}
           <motion.header 
             className="mb-6"

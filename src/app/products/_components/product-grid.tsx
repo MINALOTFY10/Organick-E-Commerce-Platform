@@ -1,7 +1,15 @@
 import { Product } from "@/types/product";
 import ProductItem from "./product-item";
 
-export default function ProductGrid({ products, favouritedIds = [] }: { products: Product[]; favouritedIds?: string[] }) {
+export default function ProductGrid({
+  products,
+  favouritedIds = [],
+  mobileScroll = false,
+}: {
+  products: Product[];
+  favouritedIds?: string[];
+  mobileScroll?: boolean;
+}) {
   const favouriteSet = new Set(favouritedIds);
   if (!products.length) {
     return (
@@ -28,12 +36,32 @@ export default function ProductGrid({ products, favouritedIds = [] }: { products
     );
   }
 
+  if (mobileScroll) {
+    return (
+      <div className="flex sm:flex-wrap sm:justify-center gap-6
+        overflow-x-auto sm:overflow-visible
+        snap-x snap-mandatory sm:snap-none
+        scrollbar-hide pb-4 sm:pb-0
+        animate-[fadeIn_0.7s_ease-out]">
+        {products.map((product, index) => (
+          <div
+            key={product.id}
+            className="shrink-0 snap-center w-[72vw] sm:shrink sm:w-[calc(50%-1.5rem)] lg:w-[calc(33%-1.5rem)] xl:w-[calc(25%-1.5rem)] max-w-87.5 animate-[fadeInUp_0.6s_ease-out_backwards]"
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
+            <ProductItem product={product} isFavourited={favouriteSet.has(product.id)} />
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-wrap justify-center gap-8 animate-[fadeIn_0.7s_ease-out]">
       {products.map((product, index) => (
         <div 
           key={product.id} 
-          className="w-full sm:w-[calc(50%-2rem)] xl:w-[calc(25%-2rem)] max-w-87.5 animate-[fadeInUp_0.6s_ease-out_backwards]"
+          className="w-full sm:w-[calc(50%-2rem)] lg:w-[calc(33%-2rem)] xl:w-[calc(25%-2rem)] max-w-87.5 animate-[fadeInUp_0.6s_ease-out_backwards]"
           style={{ animationDelay: `${index * 0.1}s` }}
         >
           <ProductItem product={product} isFavourited={favouriteSet.has(product.id)} />

@@ -21,7 +21,7 @@ export default function OfferView({ products }: OfferSectionProps) {
         <div className="absolute top-1/3 -right-32 w-80 h-80 border-4 border-white/5 rounded-full" />
       </div>
 
-      <div className="flex items-center w-[80%] justify-between mb-7 relative z-10 animate-[fadeInUp_0.7s_ease-out]">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center w-[90%] sm:w-[80%] justify-between mb-7 gap-4 sm:gap-0 relative z-10 animate-[fadeInUp_0.7s_ease-out]">
         <div className="flex flex-col mb-8 text-start">
           <div className="animate-[floatRotate_6s_ease-in-out_infinite]">
             <Image src={OfferTaglineImg} alt="Offer" width={70} height={70} />
@@ -41,8 +41,8 @@ export default function OfferView({ products }: OfferSectionProps) {
         </Link>
       </div>
 
-      <div className="w-[80%] relative z-10 animate-[fadeInUp_0.7s_ease-out_0.6s_backwards]">
-        <ProductsGrid products={products} />
+      <div className="w-full sm:w-[80%] relative z-10 animate-[fadeInUp_0.7s_ease-out_0.6s_backwards] overflow-hidden">
+        <ProductsGrid products={products} mobileScroll />
       </div>
     </section>
   );

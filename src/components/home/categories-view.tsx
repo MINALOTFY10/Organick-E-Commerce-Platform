@@ -48,7 +48,7 @@ interface Category {
 
 export default function CategoriesView({ categories }: { categories: Category[] }) {
   return (
-    <section className="w-full max-w-[80%] mx-auto my-12 animate-[fadeInUp_0.7s_ease-out]">
+    <section className="w-full max-w-[95%] sm:max-w-[90%] lg:max-w-[80%] mx-auto my-8 sm:my-12 animate-[fadeInUp_0.7s_ease-out]">
       {/* Section header */}
       <h2 className="text-3xl font-bold text-gray-900 mb-6">
         All categories
@@ -56,7 +56,7 @@ export default function CategoriesView({ categories }: { categories: Category[] 
       </h2>
 
       {/* Category grid */}
-      <div className="grid grid-cols-3 gap-4 sm:grid-cols-6 xs:grid-cols-4">
+      <div className="grid grid-cols-3 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
         {categories.map((category, index) => {
           const bgColor = CARD_COLORS[index % CARD_COLORS.length];
           const imgSrc = CARD_IMAGES[index % CARD_IMAGES.length];
@@ -72,7 +72,7 @@ export default function CategoriesView({ categories }: { categories: Category[] 
               `}
             >
               {/* Category name */}
-              <span className="text-xl font-bold text-gray-800 z-10 leading-snug max-w-[65%]">
+              <span className="text-sm sm:text-base md:text-lg xl:text-xl font-bold text-gray-800 z-10 leading-snug max-w-[65%]">
                 {category.name}
               </span>
 
