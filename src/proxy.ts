@@ -39,8 +39,8 @@ export async function proxy(request: NextRequest) {
   return NextResponse.next();
 }
 
-// Run middleware only on routes that actually need auth.
-// This avoids a session lookup on every public page, API route, and asset.
-export const config = {
-  matcher: ["/admin/:path*", "/checkout", "/checkout/:path*", "/profile", "/profile/:path*", "/account", "/account/:path*"],
-};
+// // Run middleware only on routes that actually need auth.
+// // This avoids a session lookup on every public page, API route, and asset.
+// export const config = {
+//   matcher: ["/admin/:path*", "/checkout", "/checkout/:path*", "/profile", "/profile/:path*", "/account", "/account/:path*"],
+// };
