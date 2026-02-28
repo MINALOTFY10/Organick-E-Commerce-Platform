@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import { Mail } from "lucide-react";
 import { SpecificSkeletonPageLayout } from "@/components/ui/skeleton-components";
-import { StatsCard } from "@/components/admin/dashboard/stats-card";
-import AdminPageHeader from "@/components/admin/admin-page-header";
+import { StatsCard } from "@/app/admin/_components/stats-card";
+import AdminPageHeader from "@/app/admin/_components/admin-page-header";
 import MessageFiltersProvider from "@/app/admin/messages/_components/message-filters-provider";
 import MessageFiltersView from "@/app/admin/messages/_components/message-filters-view";
 import MessageTableView from "@/app/admin/messages/_components/message-table-view";

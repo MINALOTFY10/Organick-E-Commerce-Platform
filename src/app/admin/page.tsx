@@ -4,14 +4,14 @@ import { SkeletonStatCards } from "@/components/ui/skeleton-components";
 import { SkeletonChart } from "@/components/ui/skeleton-components";
 import { SkeletonTable } from "@/components/ui/skeleton-components";
 import { getUserStats } from "@/actions/user-actions";
-import { StatsCard } from "@/components/admin/dashboard/stats-card";
+import { StatsCard } from "@/app/admin/_components/stats-card";
 import { DollarSign, ShoppingBag, Users, TrendingUp } from "lucide-react";
 import { formatCents } from "@/lib/constants/currency";
 import { getCategoriesStats, getChartData, getTopProducts } from "@/actions/admin-stats-actions";
-import { SalesOverview } from "@/components/admin/dashboard/sales-overview";
-import { CategoryPieChart } from "@/components/admin/dashboard/charts";
-import { CategoriesDynamicLegend } from "@/components/admin/dashboard/categories-dynamic-legend";
-import TopSellingProducts from "@/components/admin/dashboard/top-selling-products";
+import { SalesOverview } from "@/app/admin/_components/sales-overview";
+import { CategoryPieChart } from "@/app/admin/_components/charts";
+import { CategoriesDynamicLegend } from "@/app/admin/_components/categories-dynamic-legend";
+import TopSellingProducts from "@/app/admin/_components/top-selling-products";
 
 export interface CategoriesStatsType {
   salesByCategory: { name: string; value: number; color: string }[];

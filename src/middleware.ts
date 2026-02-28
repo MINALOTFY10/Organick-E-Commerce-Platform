@@ -8,7 +8,7 @@ export const runtime = "nodejs";
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  const isProtectedRoute =
+  const protectedRouteNeedsAuthentication =
     pathname.startsWith("/admin") ||
     pathname === "/checkout" ||
     pathname.startsWith("/checkout/") ||
@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
     pathname === "/account" ||
     pathname.startsWith("/account/");
 
-  if (!isProtectedRoute) {
+  if (!protectedRouteNeedsAuthentication) {
     return NextResponse.next();
   }
 
@@ -42,14 +42,5 @@ export async function middleware(request: NextRequest) {
 // Run middleware only on routes that actually need auth.
 // This avoids a session lookup on every public page, API route, and asset.
 export const config = {
-  matcher: [
-    "/admin/:path*",
-    "/checkout",
-    "/checkout/:path*",
-    "/profile",
-    "/profile/:path*",
-    "/account",
-    "/account/:path*",
-  ],
+  matcher: ["/admin/:path*", "/checkout", "/checkout/:path*", "/profile", "/profile/:path*", "/account", "/account/:path*"],
 };
-

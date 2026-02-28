@@ -3,7 +3,7 @@ import { Plus } from "lucide-react";
 import { SkeletonStatCards, SkeletonTablePage } from "@/components/ui/skeleton-components";
 import { InventoryStatsView } from "./_components/inventory-stats-view";
 import ProductTableView from "./_components/product-table-view";
-import AdminPageHeader from "@/components/admin/admin-page-header";
+import AdminPageHeader from "@/app/admin/_components/admin-page-header";
 import { getInventoryStats, getProductsWithCategories } from "@/actions/product-actions";
 import ProductFiltersProvider from "./_components/product-filters-provider";
 import ProductFiltersView from "./_components/product-filters-view";

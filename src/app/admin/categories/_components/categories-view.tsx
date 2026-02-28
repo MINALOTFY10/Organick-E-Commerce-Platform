@@ -8,7 +8,7 @@ import CategoryTableView from "./category-table-view";
 import CategoryFiltersView from "./category-filters-view";
 import CategoryFormModal from "./category-form-modal";
 import CategoryDeleteModal from "./category-delete-modal";
-import AdminPageHeader from "@/components/admin/admin-page-header";
+import AdminPageHeader from "@/app/admin/_components/admin-page-header";
 import { Plus } from "lucide-react";
 
 export interface Category {

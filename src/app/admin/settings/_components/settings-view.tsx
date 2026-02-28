@@ -12,7 +12,7 @@ import {
   Globe,
   Server,
 } from "lucide-react";
-import AdminPageHeader from "@/components/admin/admin-page-header";
+import AdminPageHeader from "@/app/admin/_components/admin-page-header";
 
 interface Props {
   stats: {
