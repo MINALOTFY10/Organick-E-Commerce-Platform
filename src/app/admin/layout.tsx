@@ -1,7 +1,7 @@
 import { requireAdmin } from "@/lib/auth-utils";
-import { AdminSidebar } from "@/components/admin/admin-sidebar";
-import { AdminGlobalSearch } from "@/components/admin/admin-global-search";
-import { AdminNotifications } from "@/components/admin/admin-notifications";
+import { AdminSidebar } from "@/app/admin/_components/admin-sidebar";
+import { AdminGlobalSearch } from "@/app/admin/_components/admin-global-search";
+import { AdminNotifications } from "@/app/admin/_components/admin-notifications";
 
 export default async function AdminLayout({
   children,

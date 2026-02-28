@@ -1,4 +1,4 @@
-import { StatsCard } from "@/components/admin/dashboard/stats-card";
+import { StatsCard } from "@/app/admin/_components/stats-card";
 import { Package, CheckCircle, AlertTriangle, XCircle } from "lucide-react";
 
 interface StatsProps {

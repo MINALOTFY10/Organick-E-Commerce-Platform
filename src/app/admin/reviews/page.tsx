@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import { CheckCircle2, Clock3, Star, XCircle } from "lucide-react";
 import { SpecificSkeletonPageLayout } from "@/components/ui/skeleton-components";
-import { StatsCard } from "@/components/admin/dashboard/stats-card";
-import AdminPageHeader from "@/components/admin/admin-page-header";
+import { StatsCard } from "@/app/admin/_components/stats-card";
+import AdminPageHeader from "@/app/admin/_components/admin-page-header";
 import { getReviewModerationQueue, getReviewModerationStats } from "@/actions/review-actions";
 import ReviewFiltersProvider from "./_components/use-review-filters-provider";
 import ReviewFiltersView from "./_components/review-filters-view";

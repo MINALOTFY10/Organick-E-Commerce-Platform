@@ -1,6 +1,6 @@
 import { Layers, Package, BarChart3, Crown } from "lucide-react";
 import { Category } from "./categories-view";
-import { StatsCard } from "@/components/admin/dashboard/stats-card";
+import { StatsCard } from "@/app/admin/_components/stats-card";
 
 export default function CategoryStats({ categories }: { categories: Category[] }) {
   const totalProducts = categories.reduce((s, c) => s + c._count.products, 0);

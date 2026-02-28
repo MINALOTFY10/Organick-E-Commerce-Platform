@@ -1,7 +1,7 @@
 import { SpecificSkeletonPageLayout } from "@/components/ui/skeleton-components";
 import { Suspense } from "react";
 import { Shield, Users } from "lucide-react";
-import { StatsCard } from "@/components/admin/dashboard/stats-card";
+import { StatsCard } from "@/app/admin/_components/stats-card";
 import UserFiltersProvider from "./_components/user-filters-provider";
 import UserFiltersView from "./_components/user-filters-view";
 import UserTableView from "./_components/user-table-view";

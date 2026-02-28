@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { SpecificSkeletonPageLayout } from "@/components/ui/skeleton-components";
-import AdminPageHeader from "@/components/admin/admin-page-header";
+import AdminPageHeader from "@/app/admin/_components/admin-page-header";
 import OrderFiltersProvider from "@/app/admin/orders/_components/order-filters-provider";
 import OrderFiltersView from "@/app/admin/orders/_components/order-filters-view";
 import OrderTableView from "@/app/admin/orders/_components/order-table-view";
