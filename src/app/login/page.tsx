@@ -46,6 +46,7 @@ function LoginForm() {
       });
 
       if (error) {
+        console.error("Login error:", error);
         setError(error.message || "Failed to sign in");
         setLoading(false);
         return;
