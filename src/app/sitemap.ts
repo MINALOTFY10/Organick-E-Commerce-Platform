@@ -1,11 +1,9 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // ── Static pages ──────────────────────────────────────────────────────────
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
@@ -44,7 +42,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     },
   ];
-
 
   const products = await prisma.product.findMany({
     select: { id: true, updatedAt: true },

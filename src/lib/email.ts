@@ -39,11 +39,13 @@ async function getTransporter(): Promise<Transporter> {
       secure: false,
       auth: { user: testAccount.user, pass: testAccount.pass },
     });
-    console.log(
-      "\n[email] ⚠️  No SMTP_HOST configured — using Ethereal test account.\n" +
-        `[email] Test account: ${testAccount.user}\n` +
-        "[email] Preview URLs will be logged below each send.\n"
-    );
+    if (process.env.NODE_ENV !== "production") {
+      console.log(
+        "\n[email] ⚠️  No SMTP_HOST configured — using Ethereal test account.\n" +
+          `[email] Test account: ${testAccount.user}\n` +
+          "[email] Preview URLs will be logged below each send.\n"
+      );
+    }
   }
 
   return _etherealTransporter;
@@ -122,7 +124,7 @@ export async function sendVerificationOtpEmail({
 
   // In dev (Ethereal), log a clickable preview URL so you can see the email instantly
   const previewUrl = nodemailer.getTestMessageUrl(info);
-  if (previewUrl) {
+  if (previewUrl && process.env.NODE_ENV !== "production") {
     console.log(`\n[email] ✉️  Verification OTP sent to: ${to}`);
     console.log(`[email] 👉 Preview URL: ${previewUrl}\n`);
   }
@@ -208,7 +210,7 @@ export async function sendPasswordResetEmail({
   });
 
   const previewUrl = nodemailer.getTestMessageUrl(info);
-  if (previewUrl) {
+  if (previewUrl && process.env.NODE_ENV !== "production") {
     console.log(`\n[email] ✉️  Password reset email sent to: ${to}`);
     console.log(`[email] 👉 Preview URL: ${previewUrl}\n`);
   }

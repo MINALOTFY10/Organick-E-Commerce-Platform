@@ -7,7 +7,6 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
-        // Public crawlers — allow everything except private/admin routes
         userAgent: "*",
         allow: "/",
         disallow: [

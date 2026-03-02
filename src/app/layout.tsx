@@ -20,9 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000"
-  ),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000"),
 
   title: {
     default: "Organick — Organic Food Store",
@@ -95,9 +93,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {isAdminUser ? null : <MainNavigation cartCount={cartCount} />}
-        <main id="main-content">
-          {children}
-        </main>
+        <main id="main-content">{children}</main>
         {isAdminUser ? null : (
           <>
             <FooterSection />
