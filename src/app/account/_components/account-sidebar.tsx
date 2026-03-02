@@ -43,7 +43,6 @@ export default function AccountSidebar() {
             <p className="text-sm text-gray-900 mt-1 font-semibold">Account Settings</p>
           </div>
 
-          {/* Added 'scrollbar-width: none' via standard CSS or Tailwind plugin approach */}
           <ul className="flex lg:flex-col gap-1.5 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 px-2 lg:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {ACCOUNT_LINKS.map((link) => {
               const isActive = link.href === "/account" ? pathname === "/account" : pathname.startsWith(link.href);
@@ -54,9 +53,7 @@ export default function AccountSidebar() {
                   <Link
                     href={link.href}
                     className={`group flex items-center gap-3 px-4 py-3 rounded-2xl text-sm transition-all duration-300 whitespace-nowrap ${
-                      isActive
-                        ? "bg-gray-900 text-white shadow-md shadow-gray-900/10"
-                        : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                      isActive ? "bg-gray-900 text-white shadow-md shadow-gray-900/10" : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                     }`}
                   >
                     <span
@@ -74,9 +71,7 @@ export default function AccountSidebar() {
                 </li>
               );
             })}
-          </ul>
-
-          <div className="hidden lg:block mt-4 pt-4 border-t border-gray-100 px-2">
+            <div className="hidden my-1 sm:block"></div>
             <button
               onClick={() => setConfirmOpen(true)}
               className="flex w-full items-center gap-3 px-4 py-3 rounded-2xl text-sm font-semibold text-red-600 hover:bg-red-50 active:scale-[0.98] transition-all duration-200 cursor-pointer"
@@ -84,7 +79,7 @@ export default function AccountSidebar() {
               <LogOut className="w-4 h-4 shrink-0" />
               Sign Out
             </button>
-          </div>
+          </ul>
         </nav>
       </aside>
     </>

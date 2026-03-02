@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { stripe } from "@/lib/stripe";
 import { getUserId } from "@/lib/auth-utils";
 import { revalidatePath } from "next/cache";
+import { after } from "next/server";
 import {
   SHIPPING_COST_CENTS,
   CART_EMPTY_ERROR,
@@ -157,8 +158,6 @@ export default async function CheckoutSuccessPage({
     if (isGuestOrder) {
       await clearGuestCartCookie();
     }
-
-    revalidatePath("/");
   } catch (error) {
     if (isRedirectError(error)) {
       throw error;
@@ -183,5 +182,6 @@ export default async function CheckoutSuccessPage({
     redirect("/checkout?error=payment_processing");
   }
 
+  after(() => revalidatePath("/", "layout"));
   redirect("/thankyou");
 }
