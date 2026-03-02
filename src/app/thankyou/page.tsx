@@ -18,7 +18,6 @@ export default async function ThankYouPage() {
     redirect("/");
   }
 
-  // Fetch the most recent order for this user
   const order = await prisma.order.findFirst({
     where: { userId },
     orderBy: { createdAt: "desc" },
@@ -43,7 +42,7 @@ export default async function ThankYouPage() {
           <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6">
             <CheckCircle2 className="text-[#7EB693] w-12 h-12" />
           </div>
-          <h1 className="text-5xl font-extrabold text-[#274c5b] mb-4">Order Confirmed!</h1>
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-[#274c5b] mb-4">Order Confirmed!</h1>
           <p className="text-gray-500 max-w-md mx-auto">
             Your order <span className="font-bold text-[#274c5b]">#{order.id.slice(0, 8).toUpperCase()}</span> has been placed successfully. 
             We&apos;re already gathering the freshest organic produce for you.
@@ -89,7 +88,7 @@ export default async function ThankYouPage() {
               </div>
               <div className="flex justify-between items-center pt-2">
                 <span className="text-xl font-bold text-[#274c5b]">Total</span>
-                <span className="text-3xl font-extrabold text-[#274c5b]">{formatCents(order.total)}</span>
+                <span className="text-2xl sm:text-3xl font-extrabold text-[#274c5b]">{formatCents(order.total)}</span>
               </div>
             </div>
           </div>
@@ -99,7 +98,7 @@ export default async function ThankYouPage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
           <Link 
             href="/shop" 
-            className="flex items-center justify-center gap-2 bg-white border-2 border-[#274c5b] text-[#274c5b] px-8 py-4 rounded-full font-bold hover:bg-gray-50 transition"
+            className="flex items-center justify-center gap-2 bg-white border-2 border-[#274c5b] text-[#274c5b] px-0 sm:px-8 py-4 rounded-full font-bold hover:bg-gray-50 transition"
           >
             <ShoppingBag size={20} /> Continue Shopping
           </Link>
