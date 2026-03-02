@@ -41,7 +41,7 @@ export default function OfferView({ products }: OfferSectionProps) {
       </div>
 
       <div className="w-[90%] sm:w-[80%] relative z-10 animate-[fadeInUp_0.7s_ease-out_0.6s_backwards]">
-        <ProductsGrid products={products} />
+        <ProductsGrid products={products} isOfferView={true}/>
       </div>
     </section>
   );

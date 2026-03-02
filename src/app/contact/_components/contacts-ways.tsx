@@ -19,12 +19,12 @@ export default function ContactsWays() {
         <Image
           src={ContactUsLeftImg}
           alt="Contact Us"
-          className="rounded-3xl w-3/4"
+          className="rounded-3xl w-3/5"
         />
       </div>
 
       {/* Right Text & Cards */}
-      <div className="xl:w-1/2 flex flex-col space-y-6">
+      <div className="xl:w-1/2 flex flex-col space-y-3">
         <h3 className="text-2xl font-bold text-primary">
           We&apos;d love to talk about how we can work together.
         </h3>

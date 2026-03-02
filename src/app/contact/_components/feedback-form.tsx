@@ -116,7 +116,7 @@ export default function FeedbackForm() {
         </div>
 
         {/* Submit Button */}
-        <div className="mt-8 w-full">
+        <div className=" mt-4 sm:mt-8 w-full">
           <PrimaryButton type="submit" className="ms-auto">
             {pending ? "Sending..." : "Send Message"}
           </PrimaryButton>

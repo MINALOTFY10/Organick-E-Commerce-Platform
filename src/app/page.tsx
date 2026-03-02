@@ -27,7 +27,7 @@ export async function CategoriesSection() {
 }
 
 export async function OfferSection() {
-  const products = await getProductsByCategoryNames(["Dairy", "Meat"], 2);
+  const products = await getProductsByCategoryNames(["Dairy", "Meat"], 3);
   return <OfferView products={products} />;
 }
 

@@ -20,7 +20,7 @@ export default function OfferProductsView() {
         <Image src={AboutLogoImg} alt="About Us" width={80} className="mb-2" />
         <h2 className="text-white text-2xl sm:text-3xl font-bold">What We Offer for You</h2>
       </div>
-      <div className="flex overflow-x-auto sm:grid sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl xl:max-w-5xl mx-auto w-full px-4 sm:px-0 snap-x snap-mandatory pb-4">
+      <div className="flex overflow-x-auto scrollbar-hide sm:grid sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl xl:max-w-5xl mx-auto w-full px-4 sm:px-0 snap-x snap-mandatory pb-4">
         {products.map((p, idx) => (
           <div key={idx} className="group flex flex-col items-center shrink-0 snap-center">
             <div className="bg-white rounded-2xl flex items-center justify-center w-40 h-44 sm:w-48 sm:h-52 overflow-hidden">
