@@ -7,8 +7,6 @@ import { placeOrder } from "@/actions/checkout-actions";
 import { Loader2, MapPin, Truck, CreditCard, BookUser, Check } from "lucide-react";
 import { formatCents } from "@/lib/constants/currency";
 
-// --- Types ---
-
 type SavedAddress = {
   id: string;
   street: string;
@@ -18,7 +16,6 @@ type SavedAddress = {
   country: string;
 };
 
-// Define the shape of the cart data passed from the server component
 type CartData = {
   items: {
     id: string;
@@ -30,8 +27,6 @@ type CartData = {
     };
   }[];
 };
-
-// --- Helper Components ---
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -55,8 +50,6 @@ function SubmitButton() {
   );
 }
 
-// --- Main Component ---
-
 export default function CheckoutForm({
   cart,
   savedAddresses = [],
@@ -64,23 +57,19 @@ export default function CheckoutForm({
   cart: CartData;
   savedAddresses?: SavedAddress[];
 }) {
-  // 1. Define Initial State matching the Server Action return type
   const initialState: CheckoutState = {
     message: "",
     errors: {},
     success: false,
   };
 
-  // 2. Hook up the Server Action
   const [state, action] = useActionState(placeOrder, initialState);
 
-  // 3. Address selection state
   const [selectedAddressId, setSelectedAddressId] = useState<string | null>(null);
   const [fields, setFields] = useState({ street: "", city: "", state: "", postalCode: "" });
 
   function selectAddress(addr: SavedAddress) {
     if (selectedAddressId === addr.id) {
-      // Deselect
       setSelectedAddressId(null);
       setFields({ street: "", city: "", state: "", postalCode: "" });
     } else {
@@ -94,7 +83,6 @@ export default function CheckoutForm({
     }
   }
 
-  // 4. Calculate Totals
   const subtotal = cart.items.reduce(
     (acc, item) => acc + item.product.price * item.quantity,
     0

@@ -1,4 +1,3 @@
-// src/Components/MainNavigation/hamburger-menu.tsx
 interface HamburgerMenuProps {
   menuOpen: boolean;
   setMenuOpen: (open: boolean) => void;

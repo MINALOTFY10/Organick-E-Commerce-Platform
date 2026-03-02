@@ -1,4 +1,3 @@
-// Refactored Order Skeletons
 import { 
   SkeletonPageHeader,
   SkeletonFilters,
@@ -10,10 +9,6 @@ import {
 } from '@/components/ui/skeleton-components';
 import { ArrowLeft } from "lucide-react";
 
-/**
- * Order Header Skeleton
- * Replaces: order-header-skeleton.tsx
- */
 export function OrderHeaderSkeleton() {
   return (
     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 animate-pulse">
@@ -28,18 +23,10 @@ export function OrderHeaderSkeleton() {
   );
 }
 
-/**
- * Order Filters Skeleton
- * Replaces: order-filters-skeleton.tsx
- */
 export function OrderFiltersSkeleton() {
   return <SkeletonFilters showSearch filterCount={4} />;
 }
 
-/**
- * Order Table Skeleton
- * Replaces: order-table-skeleton.tsx
- */
 export function OrderTableSkeleton() {
   return (
     <SkeletonTable
@@ -57,10 +44,6 @@ export function OrderTableSkeleton() {
   );
 }
 
-/**
- * Order Detail Page Skeleton
- * Replaces: order-page-skeleton.tsx
- */
 export function OrderPageSkeleton() {
   return (
     <div className="space-y-6 animate-pulse">

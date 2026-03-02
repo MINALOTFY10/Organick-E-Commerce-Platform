@@ -1,4 +1,3 @@
-// Refactored Product Skeletons
 import { 
   SkeletonStatCards,
   SkeletonTable,
@@ -10,18 +9,10 @@ import {
   SkeletonFormField
 } from '@/components/ui/skeleton-components';
 
-/**
- * Inventory Stats Skeleton
- * Replaces: inventory-stats-skeleton.tsx
- */
 export function InventoryStatsSkeleton() {
   return <SkeletonStatCards count={4} />;
 }
 
-/**
- * Product Table Skeleton
- * Replaces: product-table-skeleton.tsx
- */
 export function ProductTableSkeleton() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-start">
@@ -78,10 +69,6 @@ export function ProductTableSkeleton() {
   );
 }
 
-/**
- * Product Detail Skeleton
- * Replaces: product-skeleton.tsx
- */
 export function ProductSkeleton() {
   return (
     <SkeletonPageLayout

@@ -7,7 +7,6 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Lock, Eye, EyeOff, Loader2, Leaf, CheckCircle2, AlertTriangle } from "lucide-react";
 
-// ── Inner component (needs useSearchParams, wrapped in Suspense below) ────────
 function ResetPasswordForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -234,7 +233,6 @@ function ResetPasswordForm() {
   );
 }
 
-// ── Page component ─────────────────────────────────────────────────────────────
 export default function ResetPasswordPage() {
   return (
     <div className="min-h-screen flex w-full bg-[#F9F8F4]">

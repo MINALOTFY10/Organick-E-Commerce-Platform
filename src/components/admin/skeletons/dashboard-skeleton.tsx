@@ -1,4 +1,3 @@
-// Refactored Dashboard Skeletons
 import { 
   SkeletonStatCards, 
   SkeletonChart, 
@@ -7,18 +6,10 @@ import {
   Skeleton
 } from '@/components/ui/skeleton-components';
 
-/**
- * Stats Card Section Skeleton
- * Replaces: stats-card-skeleton.tsx
- */
 export function StatsCardSkeleton({ count = 4 }: { count?: number }) {
   return <SkeletonStatCards count={count} />;
 }
 
-/**
- * Sales Overview Section Skeleton
- * Replaces: sales-overview-skeleton.tsx
- */
 export function SalesOverviewSkeleton() {
   return (
     <div className="lg:col-span-2">
@@ -31,10 +22,6 @@ export function SalesOverviewSkeleton() {
   );
 }
 
-/**
- * Category Pie Chart Skeleton
- * Replaces: category-pie-chart-skeleton.tsx
- */
 export function CategoryPieChartSkeleton() {
   return (
     <SkeletonCard>
@@ -76,10 +63,6 @@ export function CategoryPieChartSkeleton() {
   );
 }
 
-/**
- * Top Selling Products Skeleton
- * Replaces: top-selling-products-skeleton.tsx
- */
 export function TopSellingProductsSkeleton({ rows = 5 }: { rows?: number }) {
   return (
     <SkeletonTable

@@ -1,9 +1,6 @@
 import nodemailer from "nodemailer";
 import type { Transporter } from "nodemailer";
 
-// ---------------------------------------------------------------------------
-// Transporter
-// ---------------------------------------------------------------------------
 // In DEVELOPMENT (no SMTP_HOST configured) we automatically create a free
 // Ethereal (https://ethereal.email/) test account and log a preview URL to
 // the console — no .env setup needed.
@@ -15,7 +12,6 @@ import type { Transporter } from "nodemailer";
 //   SMTP_USER      your SMTP username / email address
 //   SMTP_PASS      your SMTP password / app password
 //   EMAIL_FROM     the "from" address shown to recipients
-// ---------------------------------------------------------------------------
 
 // Cached Ethereal transporter so we only create one test account per server startup
 let _etherealTransporter: Transporter | null = null;
@@ -56,9 +52,6 @@ async function getTransporter(): Promise<Transporter> {
 const FROM_ADDRESS =
   process.env.EMAIL_FROM || '"Organick" <noreply@organick.com>';
 
-// ---------------------------------------------------------------------------
-// sendVerificationOtpEmail
-// ---------------------------------------------------------------------------
 export async function sendVerificationOtpEmail({
   to,
   otp,
@@ -135,9 +128,6 @@ export async function sendVerificationOtpEmail({
   }
 }
 
-// ---------------------------------------------------------------------------
-// sendPasswordResetEmail
-// ---------------------------------------------------------------------------
 export async function sendPasswordResetEmail({
   to,
   resetUrl,

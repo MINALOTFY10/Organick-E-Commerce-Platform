@@ -75,7 +75,6 @@ export default function ForgotPasswordPage() {
         >
           <AnimatePresence mode="wait">
             {submitted ? (
-              /* ── Success state ── */
               <motion.div
                 key="success"
                 initial={{ opacity: 0, y: 10 }}
@@ -111,7 +110,6 @@ export default function ForgotPasswordPage() {
                 </Link>
               </motion.div>
             ) : (
-              /* ── Form state ── */
               <motion.div
                 key="form"
                 initial={{ opacity: 0, y: 10 }}

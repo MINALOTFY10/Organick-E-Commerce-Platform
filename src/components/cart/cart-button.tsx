@@ -21,14 +21,12 @@ export default function CartButton({
   const [loading, setLoading] = useState(false);
   const cartItems = cartData?.items ?? [];
 
-  // Preload cart data on hover so it's ready before the click lands
   const handleMouseEnter = () => {
     if (!cartData && !loading) {
       getFullCart().then((data) => setCartData(data));
     }
   };
 
-  // --- Handlers ---
   const handleQuantityChange = async (itemId: string, currentQty: number, delta: number) => {
     const newQty = currentQty + delta;
     if (newQty < 1) return;

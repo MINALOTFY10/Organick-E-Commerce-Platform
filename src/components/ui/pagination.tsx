@@ -1,8 +1,7 @@
-// src/Components/UI/pagination.tsx
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { ChevronLeft, ChevronRight } from "lucide-react"; // Optional: npm install lucide-react
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface PaginationProps {
   totalCount: number;

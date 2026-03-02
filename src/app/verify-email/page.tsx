@@ -7,7 +7,6 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Loader2, Leaf, CheckCircle2, MailOpen, RefreshCw } from "lucide-react";
 
-// ── OTP digit input component ─────────────────────────────────────────────────
 function OtpInput({
   value,
   onChange,
@@ -87,7 +86,6 @@ function OtpInput({
   );
 }
 
-// ── Inner component (needs useSearchParams) ──────────────────────────────────
 function VerifyEmailForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -270,7 +268,7 @@ function VerifyEmailForm() {
   );
 }
 
-// ── Page ──────────────────────────────────────────────────────────────────────
+
 export default function VerifyEmailPage() {
   return (
     <div className="min-h-screen flex w-full bg-[#F9F8F4]">

@@ -4,8 +4,6 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Search, X, Clock, CornerDownLeft } from "lucide-react";
 
-// ── localStorage helpers ──────────────────────────────────────────────────────
-
 const RECENT_KEY = "organick_recent_searches";
 const MAX_RECENT = 10;
 
@@ -27,8 +25,6 @@ function removeStored(query: string): string[] {
   localStorage.setItem(RECENT_KEY, JSON.stringify(items));
   return items;
 }
-
-// ── Component ─────────────────────────────────────────────────────────────────
 
 export default function NavSearch({ onNavigate }: { onNavigate?: () => void }) {
   const [open, setOpen] = useState(false);
@@ -74,8 +70,6 @@ export default function NavSearch({ onNavigate }: { onNavigate?: () => void }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // ── handlers ──────────────────────────────────────────────────────────────
-
   const commit = useCallback((q: string) => {
     const trimmed = q.trim();
     if (!trimmed) return;
@@ -103,8 +97,6 @@ export default function NavSearch({ onNavigate }: { onNavigate?: () => void }) {
     e.stopPropagation();
     setRecentSearches(removeStored(item));
   };
-
-  // ── dropdown visibility ─────────────────────────────────────────────────
 
   const showRecent = open && !query.trim() && recentSearches.length > 0;
   const showSuggestions = open && !!query.trim() && suggestions.length > 0;

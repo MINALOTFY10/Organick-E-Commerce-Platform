@@ -45,7 +45,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // ── Dynamic product pages ─────────────────────────────────────────────────
+
   const products = await prisma.product.findMany({
     select: { id: true, updatedAt: true },
   });
@@ -57,7 +57,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  // ── Dynamic blog post pages ───────────────────────────────────────────────
   const blogs = await prisma.blog.findMany({
     select: { id: true, publishDate: true },
     where: { status: "PUBLISHED" },
