@@ -8,6 +8,7 @@ import { useReducedMotion } from "@/lib/hooks/use-reduced-motion";
 import CartButton from "@/components/cart/cart-button";
 import PrimaryButton from "@/components/ui/primary-button";
 import ShopDropdown from "@/components/main-navigation/shop-dropdown";
+import NavSearch from "./nav-search";
 
 const MAIN_LINKS = [
   { name: "Home", href: "/" },
@@ -23,74 +24,6 @@ interface NavLinksProps {
   setMenuOpen: (open: boolean) => void;
   session: { user: { name: string } } | null;
   cartCount: number;
-}
-
-/** Inline storefront search that navigates to /products?search=... */
-function NavSearch({ onNavigate }: { onNavigate?: () => void }) {
-  const [open, setOpen] = useState(false);
-  const [query, setQuery] = useState("");
-  const inputRef = useRef<HTMLInputElement>(null);
-  const router = useRouter();
-
-  useEffect(() => {
-    if (open) inputRef.current?.focus();
-  }, [open]);
-
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const q = query.trim();
-    if (q) {
-      router.push(`/products?search=${encodeURIComponent(q)}`);
-      setQuery("");
-      setOpen(false);
-      onNavigate?.();
-    }
-  };
-
-  const close = () => {
-    setQuery("");
-    setOpen(false);
-  };
-
-  return (
-    <div className="relative flex items-center">
-      {open ? (
-        <motion.form
-          initial={{ width: 0, opacity: 0 }}
-          animate={{ width: 220, opacity: 1 }}
-          exit={{ width: 0, opacity: 0 }}
-          transition={{ duration: 0.25 }}
-          onSubmit={submit}
-          className="flex items-center gap-1 bg-gray-100 rounded-xl px-3 py-1.5 overflow-hidden"
-        >
-          <Search size={15} className="text-gray-400 shrink-0" />
-          <input
-            ref={inputRef}
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search products…"
-            className="flex-1 bg-transparent text-sm text-(--primary-color) placeholder:text-gray-400 outline-none min-w-0"
-          />
-          <button
-            type="button"
-            onClick={close}
-            className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
-            aria-label="Close search"
-          >
-            <X size={14} />
-          </button>
-        </motion.form>
-      ) : (
-        <button
-          aria-label="Search products"
-          onClick={() => setOpen(true)}
-          className="flex items-center justify-center w-9 h-9 rounded-full bg-(--primary-color)/10 text-(--primary-color) hover:bg-(--secondary-color)/15 hover:text-(--secondary-color) transition-all duration-200 cursor-pointer"
-        >
-          <Search size={18} />
-        </button>
-      )}
-    </div>
-  );
 }
 
 const NavLinks = ({ menuOpen, setMenuOpen, session, cartCount }: NavLinksProps) => {
@@ -158,8 +91,9 @@ const NavLinks = ({ menuOpen, setMenuOpen, session, cartCount }: NavLinksProps) 
 
         {/* Action Section */}
         <motion.li variants={itemVars} className="ms-auto flex items-center gap-3 sm:gap-4 mt-6 lg:mt-0">
-          {/* Storefront search — always visible */}
-          <NavSearch onNavigate={() => setMenuOpen(false)} />
+          <div className="hidden lg:block">
+            <NavSearch onNavigate={() => setMenuOpen(false)} />
+          </div>
 
           {session ?
             <>

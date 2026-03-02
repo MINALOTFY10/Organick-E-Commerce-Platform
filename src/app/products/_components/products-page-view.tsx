@@ -3,18 +3,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import ProductGrid from "@/app/products/_components/product-grid";
-import ProductFiltersSidebar from "@/app/products/_components/product-filters-sidebar";
 import ProductPagination from "@/app/products/_components/product-pagination";
 import { Product } from "@/types/product";
 
 export type SortBy = "featured" | "price_asc" | "price_desc" | "best_rated";
-
-const SORT_OPTIONS: { value: SortBy; label: string }[] = [
-  { value: "featured", label: "Featured" },
-  { value: "price_asc", label: "Price: Low to High" },
-  { value: "price_desc", label: "Price: High to Low" },
-  { value: "best_rated", label: "Best Rated" },
-];
 
 interface Props {
   products: Product[];
@@ -31,30 +23,17 @@ interface Props {
   favouritedIds: string[];
 }
 
-export default function ProductPageView({
-  products,
-  categories,
-  totalPages,
-  currentPage,
-  filters,
-  favouritedIds,
-}: Props) {
+export default function ProductPageView({ products, categories, totalPages, currentPage, filters, favouritedIds }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const [search, setSearch] = useState(filters.search);
-  const [price, setPrice] = useState<[number, number]>([
-    filters.minPrice,
-    filters.maxPrice,
-  ]);
+  const [price, setPrice] = useState<[number, number]>([filters.minPrice, filters.maxPrice]);
 
   // Sync local state when URL-driven filter values change (e.g. reset)
   useEffect(() => setSearch(filters.search), [filters.search]);
-  useEffect(
-    () => setPrice([filters.minPrice, filters.maxPrice]),
-    [filters.minPrice, filters.maxPrice]
-  );
+  useEffect(() => setPrice([filters.minPrice, filters.maxPrice]), [filters.minPrice, filters.maxPrice]);
 
   // Build a new query string and navigate
   const updateParams = useCallback(
@@ -86,7 +65,7 @@ export default function ProductPageView({
       const qs = params.toString();
       router.push(qs ? `${pathname}?${qs}` : pathname);
     },
-    [searchParams, router, pathname]
+    [searchParams, router, pathname],
   );
 
   // Debounce search → URL (400 ms)
@@ -118,28 +97,9 @@ export default function ProductPageView({
   }, [router, pathname]);
 
   return (
-    <div className="gap-10">
-      {/* <ProductFiltersSidebar
-        search={search}
-        onSearch={setSearch}
-        category={filters.category}
-        onCategory={(c) => updateParams({ category: c })}
-        price={price}
-        onPrice={setPrice}
-        categories={categories}
-        onReset={handleReset}
-      /> */}
-
-      <div className="space-y-10">
-        <ProductGrid products={products} favouritedIds={favouritedIds} />
-        {totalPages > 1 && (
-          <ProductPagination
-            page={currentPage}
-            totalPages={totalPages}
-            onChange={(p) => updateParams({ page: p })}
-          />
-        )}
-      </div>
+    <div className="space-y-10">
+      <ProductGrid products={products} favouritedIds={favouritedIds} />
+      {totalPages > 1 && <ProductPagination page={currentPage} totalPages={totalPages} onChange={(p) => updateParams({ page: p })} />}
     </div>
   );
 }

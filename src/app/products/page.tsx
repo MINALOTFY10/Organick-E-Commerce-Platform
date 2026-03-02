@@ -48,10 +48,10 @@ async function ProductsSection({ params }: { params: PageProps["searchParams"] }
   let totalPages = 0;
   let categories: { id: string; name: string }[] = [];
 
-  if (filters.category && filters.category !== "all") {
+  if (filters.search || (filters.category && filters.category !== "all")) {
     const results = await getFilteredProducts({
       search: filters.search || undefined,
-      category: filters.category,
+      category: filters.category !== "all" ? filters.category : undefined,
       minPrice: filters.minPrice,
       maxPrice: filters.maxPrice,
       sortBy: filters.sortBy,
