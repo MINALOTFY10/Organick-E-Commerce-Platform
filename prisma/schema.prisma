@@ -1,0 +1,278 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String       @id @default(uuid())
+  name          String
+  email         String       @unique
+  password      String?
+  phone         String?
+  role          UserRole     @default(CUSTOMER)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  emailVerified Boolean      @default(false)
+  image         String?
+  addresses     Address[]
+  cart          Cart?
+  orders        Order[]
+  reviews       ProductReview[]
+  favourites    Favourite[]
+  accounts      Account[]
+  sessions      Session[]
+
+  @@map("user")
+}
+
+model Address {
+  id         String   @id @default(uuid())
+  userId     String
+  street     String
+  city       String
+  state      String
+  postalCode String
+  country    String   @default("Egypt")
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id])
+  orders     Order[]
+
+  @@index([userId])
+}
+
+model Category {
+  id          String      @id @default(uuid())
+  name        String      @unique
+  description String?
+  createdAt   DateTime    @default(now())
+  products    Product[]
+  orderItems  OrderItem[]
+}
+
+model Product {
+  id             String        @id @default(uuid())
+  name           String
+  description    String
+  price          Int
+  salePrice      Int?
+  stock          Int
+  imageUrl       String?
+  categoryId     String
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  additionalInfo String?
+  summary        String
+  cartItems      CartItem[]
+  orderItems     OrderItem[]
+  reviews        ProductReview[]
+  favourites     Favourite[]
+  category       Category      @relation(fields: [categoryId], references: [id])
+
+  @@index([categoryId])
+}
+
+model Cart {
+  id        String     @id @default(uuid())
+  userId    String     @unique
+  createdAt DateTime   @default(now())
+  user      User       @relation(fields: [userId], references: [id])
+  items     CartItem[]
+}
+
+model CartItem {
+  id        String  @id @default(uuid())
+  cartId    String
+  productId String
+  quantity  Int
+  cart      Cart    @relation(fields: [cartId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+
+  @@unique([cartId, productId])
+  @@index([cartId])
+  @@index([productId])
+}
+
+model Order {
+  id              String      @id @default(uuid())
+  userId          String
+  addressId       String?
+  total           Int
+  stripeSessionId String?     @unique
+  status          OrderStatus @default(PENDING)
+  trackingNumber  String?
+  shippedAt       DateTime?
+  createdAt       DateTime    @default(now())
+  user            User        @relation(fields: [userId], references: [id])
+  address         Address?    @relation(fields: [addressId], references: [id])
+  items           OrderItem[]
+
+  @@index([userId])
+  @@index([addressId])
+  @@index([status, createdAt])
+}
+
+model OrderItem {
+  id         String    @id @default(uuid())
+  orderId    String
+  productId  String
+  categoryId String?
+  quantity   Int
+  price      Int
+  order      Order     @relation(fields: [orderId], references: [id])
+  product    Product   @relation(fields: [productId], references: [id])
+  category   Category? @relation(fields: [categoryId], references: [id])
+
+  @@index([orderId])
+  @@index([productId])
+  @@index([categoryId])
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+  @@map("verification")
+}
+
+enum OrderStatus {
+  PENDING
+  SHIPPED
+  COMPLETED
+  CANCELLED
+}
+
+enum UserRole {
+  CUSTOMER
+  ADMIN
+  SUPER_ADMIN
+}
+
+
+model Blog {
+  id          String     @id @default(uuid())
+  heroImage   String
+  publishDate DateTime   @default(now())
+  author      String
+  title       String
+  subtitle    String
+  status      BlogStatus @default(PUBLISHED)
+  sections    BlogSection[]
+}
+
+model BlogSection {
+  id      String @id @default(uuid())
+  type    SectionType  
+  content String? 
+  items   String[]  
+  order   Int    
+  blog    Blog   @relation(fields: [blogId], references: [id])
+  blogId  String
+
+  @@index([blogId])
+}
+
+enum BlogStatus {
+  DRAFT
+  PUBLISHED
+}
+
+enum SectionType {
+  PARAGRAPH
+  HEADING
+  LIST
+  ORDERED_LIST
+  QUOTE
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  fullName  String
+  email     String
+  company   String?
+  phone     String?
+  message   String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("contact_messages")
+}
+
+model ProductReview {
+  id        String       @id @default(cuid())
+  productId String
+  userId    String
+  rating    Int
+  comment   String       @db.Text
+  status    ReviewStatus @default(PENDING)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  product   Product      @relation(fields: [productId], references: [id], onDelete: Cascade)
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, userId])
+  @@index([productId, status, createdAt])
+  @@index([status, createdAt])
+}
+
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Favourite {
+  id        String   @id @default(cuid())
+  userId    String
+  productId String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+  @@index([userId])
+  @@index([productId])
+}

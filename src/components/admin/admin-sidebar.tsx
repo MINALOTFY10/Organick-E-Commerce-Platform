@@ -1,0 +1,97 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { LayoutDashboard, ShoppingBag, Users, Layers , Settings, LogOut, Package, Newspaper, MessageSquare, Star } from "lucide-react";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+
+export function AdminSidebar() {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleSignOut = async () => {
+    await authClient.signOut();
+    router.push("/login");
+  };
+
+  const navItems = [
+    { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
+    { name: "Inventory", href: "/admin/products", icon: Package },
+    { name: "Categories", href: "/admin/categories", icon: Layers  },
+    { name: "Orders", href: "/admin/orders", icon: ShoppingBag },
+    { name: "Users", href: "/admin/users", icon: Users },
+    { name: "Blogs", href: "/admin/blogs", icon: Newspaper },
+    { name: "Reviews", href: "/admin/reviews", icon: Star },
+    { name: "Messages", href: "/admin/messages", icon: MessageSquare },
+  ];
+
+  return (
+    <aside className="w-60 bg-[#0a1f1a] text-white min-h-screen flex flex-col fixed left-0 top-0 border-r border-[#1a3d32]">
+      <div className="p-6">
+        <Link href="/admin" className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-[#00ff7f] rounded-full flex items-center justify-center">
+            <div className="w-6 h-6 bg-white rounded-full"></div>
+          </div>
+          <div>
+            <h2 className="text-xl font-bold text-white">Organick</h2>
+            <p className="text-xs text-emerald-400 uppercase tracking-wider">Admin Panel</p>
+          </div>
+        </Link>
+      </div>
+
+      <nav className="flex-1 px-4 py-6">
+        <div className="mb-3 px-3 text-xs font-semibold text-emerald-400/60 uppercase tracking-wider">Main Menu</div>
+        <div className="space-y-1">
+          {navItems.map((item) => {
+            const isActive = pathname === item.href || (item.href !== "/admin" && pathname.startsWith(item.href));
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${
+                  isActive ? "bg-[#00ff7f] text-black font-medium" : "text-gray-400 hover:bg-[#1a3d32] hover:text-white"
+                }`}
+              >
+                <item.icon className="w-5 h-5" />
+                <span>{item.name}</span>
+              </Link>
+            );
+          })}
+        </div>
+
+        <div className="mt-8 mb-3 px-3 text-xs font-semibold text-emerald-400/60 uppercase tracking-wider">Settings</div>
+        <div className="space-y-1">
+          <Link
+            href="/admin/settings"
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${
+              pathname === "/admin/settings" ? "bg-[#00ff7f] text-black font-medium" : "text-gray-400 hover:bg-[#1a3d32] hover:text-white"
+            }`}
+          >
+            <Settings className="w-5 h-5" />
+            <span>Settings</span>
+          </Link>
+          <button
+            onClick={handleSignOut}
+            className="flex items-center gap-3 px-3 py-2.5 text-gray-400 hover:bg-[#1a3d32] hover:text-white w-full rounded-lg transition-colors"
+          >
+            <LogOut className="w-5 h-5" />
+            <span>Logout</span>
+          </button>
+        </div>
+      </nav>
+
+      <div className="p-4 border-t border-[#1a3d32]">
+        <div className="flex items-center gap-3 px-3 py-2">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-pink-400 flex items-center justify-center text-white text-sm font-bold">
+            A
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-medium text-white truncate">Alex Morgan</p>
+            <p className="text-xs text-emerald-400/70">Super Admin</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  );
+}
