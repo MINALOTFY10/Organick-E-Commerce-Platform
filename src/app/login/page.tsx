@@ -46,8 +46,7 @@ function LoginForm() {
       });
 
       if (error) {
-        const stringError = typeof error === "object" ? JSON.stringify(error) : String(error);
-        setError(stringError || "Failed to sign in");
+        setError(error.message || "Failed to sign in");
         setLoading(false);
         return;
       }

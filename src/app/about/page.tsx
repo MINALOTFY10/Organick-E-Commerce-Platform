@@ -21,7 +21,6 @@ export default function AboutPage() {
   return (
     <main className="flex flex-col min-h-screen">
       <SectionHeader img={AboutBannerImg} title="About Us" />
-      {/* Use tighter container and more consistent vertical spacing */}
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 space-y-10 py-8 sm:pt-14 pb-8">
         <AboutView />
         <WhyChooseUsView />

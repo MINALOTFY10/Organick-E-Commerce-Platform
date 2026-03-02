@@ -5,10 +5,12 @@ export default function ProductGrid({
   products,
   favouritedIds = [],
   mobileScroll = false,
+  isOfferView = false,
 }: {
   products: Product[];
   favouritedIds?: string[];
   mobileScroll?: boolean;
+  isOfferView?: boolean;
 }) {
   const favouriteSet = new Set(favouritedIds);
   if (!products.length) {
@@ -38,15 +40,19 @@ export default function ProductGrid({
 
   return (
     <div
-      className={`grid  ${products.length == 4 ? "grid-cols-2" : "grid-cols-3"}  sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-6 pb-4 animate-[fadeIn_0.7s_ease-out]`}
-      style={{
-        gridAutoRows: '1fr',
-      }}
+      className={`animate-[fadeIn_0.7s_ease-out] ${
+        isOfferView
+          ? "flex xl:grid overflow-x-auto xl:overflow-visible scrollbar-hide gap-3 sm:gap-4 pb-4 snap-x snap-mandatory xl:grid-cols-6 xl:gap-6"
+          : "grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-6 pb-4"
+      }`}
+      style={isOfferView ? undefined : { gridAutoRows: '1fr' }}
     >
       {products.map((product, index) => (
         <div
           key={product.id}
-          className="w-full h-full animate-[fadeInUp_0.6s_ease-out_backwards]"
+          className={`animate-[fadeInUp_0.6s_ease-out_backwards] ${
+            isOfferView ? "shrink-0 w-50 sm:w-52 xl:w-auto snap-start" : "w-full h-full"
+          }`}
           style={{ animationDelay: `${index * 0.1}s` }}
         >
           <ProductItem product={product} isFavourited={favouriteSet.has(product.id)} />
