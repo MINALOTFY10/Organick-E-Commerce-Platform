@@ -12,9 +12,9 @@ type TopProduct = {
 
 export default function TopSellingProducts({ TopProducts }: { TopProducts: TopProduct[] }) {
   return (
-    <div className="bg-[#1a3d32] rounded-2xl border border-[#2a4d42] p-6">
+    <div className="bg-[#1a3d32] rounded-2xl border border-[#2a4d42] p-4 md:p-6">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-xl font-bold text-white">Top Selling Products</h3>
+        <h3 className="text-lg md:text-xl font-bold text-white">Top Selling Products</h3>
         <Link href="/admin/products">
           <button className="text-sm text-[#00ff7f] hover:text-[#00ff7f]/80 font-medium">View All →</button>
         </Link>

@@ -14,13 +14,13 @@ interface AdminPageHeaderProps {
 
 export default function AdminPageHeader({ title, subtitle, breadcrumb, actionLabel, onAction, actionLink, actionIcon }: AdminPageHeaderProps) {
   return (
-    <header className="flex items-center justify-between">
+    <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
       <div>
         {breadcrumb && <p className="text-sm text-gray-400 mb-1">{breadcrumb}</p>}
 
-        <h2 className="text-3xl font-bold text-white">{title}</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-white">{title}</h2>
 
-        {subtitle && <p className="text-gray-400 mt-1">{subtitle}</p>}
+        {subtitle && <p className="text-gray-400 mt-1 text-sm md:text-base">{subtitle}</p>}
       </div>
 
       {actionLabel &&
@@ -28,12 +28,12 @@ export default function AdminPageHeader({ title, subtitle, breadcrumb, actionLab
         (onAction ?
           <button
             onClick={onAction}
-            className="flex items-center gap-2 bg-[#00ff7f] text-black px-6 py-3 rounded-lg hover:bg-[#00ff7f]/90 font-medium cursor-pointer"
+            className="flex items-center gap-2 bg-[#00ff7f] text-black px-4 md:px-6 py-2.5 md:py-3 rounded-lg hover:bg-[#00ff7f]/90 font-medium cursor-pointer text-sm md:text-base shrink-0 self-start sm:self-auto"
           >
             {actionIcon}
             {actionLabel}
           </button>
-        : <Link href={actionLink!} className="flex items-center gap-2 bg-[#00ff7f] text-black px-6 py-3 rounded-xl hover:bg-[#00ff7f]/90 font-medium">
+        : <Link href={actionLink!} className="flex items-center gap-2 bg-[#00ff7f] text-black px-4 md:px-6 py-2.5 md:py-3 rounded-xl hover:bg-[#00ff7f]/90 font-medium text-sm md:text-base shrink-0 self-start sm:self-auto">
             {actionIcon}
             {actionLabel}
           </Link>)}

@@ -36,21 +36,25 @@ export async function OrderDetailFetcher({ params }: { params: Promise<{ id: str
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center gap-4 p-5 rounded-2xl">
-        <Link href="/admin/orders">
-          <button className="p-2 bg-[#244c40] hover:bg-emerald-500/20 rounded-lg transition">
-            <ArrowLeft className="w-5 h-5 text-white cursor-pointer" />
-          </button>
-        </Link>
+      <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 md:p-5 rounded-2xl">
+        <div className="flex items-center gap-4">
+          <Link href="/admin/orders">
+            <button className="p-2 bg-[#244c40] hover:bg-emerald-500/20 rounded-lg transition">
+              <ArrowLeft className="w-5 h-5 text-white cursor-pointer" />
+            </button>
+          </Link>
 
-        <div className="flex-1">
-          <h2 className="text-3xl font-bold text-white">Order #{order.id.slice(0, 8)}</h2>
-          <p className="text-slate-300 mt-1">
-            Placed on {new Date(order.createdAt).toLocaleDateString()} at {new Date(order.createdAt).toLocaleTimeString()}
-          </p>
+          <div className="flex-1">
+            <h2 className="text-2xl md:text-3xl font-bold text-white">Order #{order.id.slice(0, 8)}</h2>
+            <p className="text-slate-300 mt-1 text-sm">
+              Placed on {new Date(order.createdAt).toLocaleDateString()} at {new Date(order.createdAt).toLocaleTimeString()}
+            </p>
+          </div>
         </div>
 
-        <UpdateOrderStatusButton orderId={order.id} currentStatus={order.status} />
+        <div className="sm:ml-auto">
+          <UpdateOrderStatusButton orderId={order.id} currentStatus={order.status} />
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

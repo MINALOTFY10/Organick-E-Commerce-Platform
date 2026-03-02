@@ -12,7 +12,7 @@ export default async function EditBlogPage({
   const blog = await getBlogById(id);
 
   return (
-    <div className="p-8">
+    <div>
       <BlogForm blog={blog} />
     </div>
   );

@@ -5,7 +5,7 @@ export default async function NewBlogPage() {
   await requireAdmin();
 
   return (
-    <div className="p-8">
+    <div>
       <BlogForm />
     </div>
   );

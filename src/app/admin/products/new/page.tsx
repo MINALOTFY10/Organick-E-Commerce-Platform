@@ -17,7 +17,7 @@ export default async function NewProductPage() {
   });
 
   return (
-    <div className="p-8">
+    <div>
       <ProductForm categories={categories} />
     </div>
   );

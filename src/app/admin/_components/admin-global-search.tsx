@@ -109,7 +109,7 @@ export function AdminGlobalSearch() {
           className="w-full flex items-center gap-3 pl-10 pr-4 py-2.5 bg-[#1a3d32] border border-[#2a4d42] rounded-lg text-gray-500 hover:border-[#3a5d52] focus:outline-none transition-colors text-left"
         >
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
-          <span>Global search...</span>
+          <span className="hidden sm:inline">Global search...</span>
           <kbd className="ml-auto hidden sm:inline-flex items-center gap-1 rounded border border-[#2a4d42] bg-[#0d2820] px-1.5 py-0.5 text-xs text-gray-500">
             Ctrl K
           </kbd>

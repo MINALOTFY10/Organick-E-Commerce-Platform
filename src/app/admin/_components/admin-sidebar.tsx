@@ -2,11 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, ShoppingBag, Users, Layers , Settings, LogOut, Package, Newspaper, MessageSquare, Star } from "lucide-react";
+import { LayoutDashboard, ShoppingBag, Users, Layers, Settings, LogOut, Package, Newspaper, MessageSquare, Star, X } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 
-export function AdminSidebar() {
+interface AdminSidebarProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+}
+
+export function AdminSidebar({ isOpen = false, onClose }: AdminSidebarProps) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -27,9 +32,13 @@ export function AdminSidebar() {
   ];
 
   return (
-    <aside className="w-60 bg-[#0a1f1a] text-white min-h-screen flex flex-col fixed left-0 top-0 border-r border-[#1a3d32]">
-      <div className="p-6">
-        <Link href="/admin" className="flex items-center gap-3">
+    <aside
+      className={`w-60 bg-[#0a1f1a] text-white min-h-screen flex flex-col fixed left-0 top-0 border-r border-[#1a3d32] z-30 transition-transform duration-300 ease-in-out ${
+        isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+      }`}
+    >
+      <div className="p-6 flex items-center justify-between">
+        <Link href="/admin" className="flex items-center gap-3" onClick={onClose}>
           <div className="w-10 h-10 bg-[#00ff7f] rounded-full flex items-center justify-center">
             <div className="w-6 h-6 bg-white rounded-full"></div>
           </div>
@@ -38,6 +47,14 @@ export function AdminSidebar() {
             <p className="text-xs text-emerald-400 uppercase tracking-wider">Admin Panel</p>
           </div>
         </Link>
+        {/* Close button — mobile only */}
+        <button
+          className="md:hidden p-1 text-gray-400 hover:text-white transition-colors"
+          onClick={onClose}
+          aria-label="Close menu"
+        >
+          <X className="w-5 h-5" />
+        </button>
       </div>
 
       <nav className="flex-1 px-4 py-6">
@@ -49,6 +66,7 @@ export function AdminSidebar() {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={onClose}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${
                   isActive ? "bg-[#00ff7f] text-black font-medium" : "text-gray-400 hover:bg-[#1a3d32] hover:text-white"
                 }`}
@@ -64,6 +82,7 @@ export function AdminSidebar() {
         <div className="space-y-1">
           <Link
             href="/admin/settings"
+            onClick={onClose}
             className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${
               pathname === "/admin/settings" ? "bg-[#00ff7f] text-black font-medium" : "text-gray-400 hover:bg-[#1a3d32] hover:text-white"
             }`}

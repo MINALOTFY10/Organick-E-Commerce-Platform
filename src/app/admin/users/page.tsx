@@ -23,11 +23,11 @@ export async function UsersSection() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-3xl font-bold text-white">Users</h2>
-        <p className="text-gray-400 mt-1">Manage user accounts ({users.length} users)</p>
+        <h2 className="text-2xl md:text-3xl font-bold text-white">Users</h2>
+        <p className="text-gray-400 mt-1 text-sm md:text-base">Manage user accounts ({users.length} users)</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-6">
         <StatsCard cards={cards} />
       </div>
 

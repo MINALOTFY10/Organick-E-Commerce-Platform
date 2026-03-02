@@ -143,14 +143,14 @@ export default function BlogForm({ blog }: BlogFormProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Link href="/admin/blogs" className="p-2 hover:bg-[#2a4d42] rounded-lg transition-colors">
+          <Link href="/admin/blogs" className="p-2 hover:bg-[#2a4d42] rounded-lg transition-colors shrink-0">
             <ArrowLeft className="w-6 h-6 text-gray-400" />
           </Link>
           <div>
-            <h2 className="text-3xl font-bold text-white">
+            <h2 className="text-2xl md:text-3xl font-bold text-white">
               {blog ? "Edit Blog Post" : "Create Blog Post"}
             </h2>
-            <p className="text-gray-400 mt-1">
+            <p className="text-gray-400 mt-1 text-sm">
               {blog ? "Update your blog post content" : "Write a new blog post"}
             </p>
           </div>
@@ -165,7 +165,7 @@ export default function BlogForm({ blog }: BlogFormProps) {
         )}
 
         {/* Basic Info */}
-        <div className="bg-[#1a3d32] rounded-xl border border-[#2a4d42] p-8">
+        <div className="bg-[#1a3d32] rounded-xl border border-[#2a4d42] p-4 md:p-8">
           <h3 className="text-lg font-bold text-white mb-6">Basic Information</h3>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -238,7 +238,7 @@ export default function BlogForm({ blog }: BlogFormProps) {
         </div>
 
         {/* Sections */}
-        <div className="bg-[#1a3d32] rounded-xl border border-[#2a4d42] p-8">
+        <div className="bg-[#1a3d32] rounded-xl border border-[#2a4d42] p-4 md:p-8">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-lg font-bold text-white">Content Sections</h3>
             <button

@@ -61,7 +61,7 @@ export async function TopSellingProductsSection() {
 export default async function AdminDashboardPage() {
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold text-white mb-2">Overview</h1>
+      <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">Overview</h1>
       <Suspense fallback={<SkeletonStatCards count={4} />}>
         <StatsCardSection />
       </Suspense>

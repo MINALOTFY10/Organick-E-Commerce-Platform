@@ -74,23 +74,23 @@ export default function ProductForm({ product, categories }: ProductFormProps) {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div className="flex items-center gap-4">
-          <Link href="/admin/products" className="p-2 hover:bg-[#2a4d42] rounded-lg transition-colors">
+          <Link href="/admin/products" className="p-2 hover:bg-[#2a4d42] rounded-lg transition-colors shrink-0">
             <ArrowLeft className="w-6 h-6 text-gray-400" />
           </Link>
           <div>
-            <h2 className="text-3xl font-bold text-white">
+            <h2 className="text-2xl md:text-3xl font-bold text-white">
               {product ? "Edit Product" : "Add New Product"}
             </h2>
-            <p className="text-gray-400 mt-1">
+            <p className="text-gray-400 mt-1 text-sm">
               {product ? "Update product information" : "Create a new product listing"}
             </p>
           </div>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="bg-[#1a3d32] rounded-xl border border-[#2a4d42] p-8">
+      <form onSubmit={handleSubmit} className="bg-[#1a3d32] rounded-xl border border-[#2a4d42] p-4 md:p-8">
         {error && (
           <div className="mb-6 p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 text-sm">
             {error}

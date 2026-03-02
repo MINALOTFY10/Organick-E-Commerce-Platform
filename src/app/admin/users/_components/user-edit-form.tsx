@@ -60,19 +60,19 @@ export default function UserEditForm({ user }: UserEditFormProps) {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center gap-4">
-        <Link href={`/admin/users/${user.id}`} className="p-2 hover:bg-[#2a4d42] rounded-lg transition-colors">
+        <Link href={`/admin/users/${user.id}`} className="p-2 hover:bg-[#2a4d42] rounded-lg transition-colors shrink-0">
           <ArrowLeft className="w-6 h-6 text-gray-400" />
         </Link>
         <div>
           <p className="text-sm text-gray-400 mb-1">Home › Users › {user.name} › Edit</p>
-          <h2 className="text-3xl font-bold text-white">Edit User</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-white">Edit User</h2>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Form */}
         <div className="lg:col-span-2">
-          <form onSubmit={handleSubmit} className="bg-[#1a3d32] rounded-xl border border-[#2a4d42] p-8">
+          <form onSubmit={handleSubmit} className="bg-[#1a3d32] rounded-xl border border-[#2a4d42] p-4 md:p-8">
             {error && (
               <div className="mb-6 p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 text-sm">
                 {error}
