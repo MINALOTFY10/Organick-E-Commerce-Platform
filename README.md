@@ -114,13 +114,7 @@ This reflects substantial incremental delivery and maintenance work over time.
 
 ---
 
-## Screenshot Showcase (Project Work)
-
-> These screenshots/images come from the current project assets in `public/img` and demonstrate the implemented UI scope.
-
-### Main Navigation & Branding
-
-![Navigation](public/img/navigation.png)
+## Screenshot Showcase 
 
 ![Home Banner](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045721/Home_k3uebv.png)
 
