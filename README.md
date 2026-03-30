@@ -122,29 +122,7 @@ This reflects substantial incremental delivery and maintenance work over time.
 
 ![Navigation](public/img/navigation.png)
 
-### Home / Storefront Visual
-
 ![Home Banner](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045721/Home_k3uebv.png)
-
-### Product Experience
-
-![Categories](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045719/categories_tnqk3q.png)
-![our Collection](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045722/products_ou40ls.png)
-![Product Example](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045716/product_details_fe6mho.png)
-![Reviews Section](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045718/reviews_iby3ni.png)
-
-### Blog Section
-
-![Blog Feed](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045721/blog_feed_va9isr.png)
-
-### Checkout Experience
-
-![Checkout Page](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045716/checkout_hado4m.png)
-![Stripe Checkout](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772045718/stripe_checkout_oiyee7.png)
-
-### Admin Dashboard Section
-
-![Admin Feed](https://res.cloudinary.com/db5l8tzgk/image/upload/v1772046048/admin_dashboard_rg9xbk.png)
 
 ---
 
